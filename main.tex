@@ -156,20 +156,9 @@
 
 \usepackage{marginnote}
 
-%%% Some complaint...
-%%% https://tex.stackexchange.com/questions/257829/package-titlesec-error-entered-in-horizontal-mode-sectionintrodu%C3%87%C3%83o
-%% \usepackage[calcwidth]{titlesec}
-%% \newlength\mylen
-%% \setlength\mylen{\dimexpr\oddsidemargin+1in+\hoffset\relax}
 
-%% %\bfseries
-%% \titleformat{\paragraph}[runin]
-%%   {\sffamily\fontseries{sbc}\selectfont}
-%%   {\protect\marginnote[\theparagraph]{\theparagraph}}{0em}{}{\space}
 
-%% \renewcommand{\marginnotevadjust}{-1\baselineskip}
 
-%% \titlespacing{\paragraph}{0.0em}{1ex}{0.5em}
 
 \makeatletter
 \long\def\@mn@@@marginnote[#1]#2[#3]{%
@@ -298,7 +287,6 @@ argumentative structures.  We show how the framework might be used to
 support computational reasoning, and argue that it provides a more
 natural way to examine the process of proving theorems than do
 Lamport's structured proofs.
-%%
 \keywords{inference anchoring theory \and mathematical practice \and mathematical argument \and structured proof}
 \end{abstract}
 
@@ -313,66 +301,14 @@ The representation of mathematical knowledge and inference in appropriate formal
 Our approach to modelling such content is inspired by the general-purpose argument modelling formalism Inference Anchoring Theory (IAT), introduced by \citet{reed2011dialogues}. As its name suggests, IAT anchors logical inferences in discourse. IAT has been applied to mediation 
 \cite{janier2017towards}, debates \cite{budzynska2014model}, and to paradoxes in ethotic argumentation \cite{budzynska2013circularity}, along with other real-world dialogues \cite{budzynska2013towards}. The \emph{Inference Anchoring Theory + Content} (IATC) framework we introduce is based on IAT, but with several significant modifications.  Most fundamentally, IATC is designed to bring to the surface the structural features inherent in mathematical content.
 
-Indeed, IATC could be overlayed on top of mathematics represented in more formal languages, where an informal text can be put in full or partial correspondence with a formal treatment. Lamport's ``Temporal Logic of Actions+'' (TLA+) \cite{lamport1999specifying,lamport2014tla2} is one candidate formalism that could be used to model content-level expressions, by analogy with Lamport's own semi-formal ``structured proofs'' 
-\cite{lamport1995write,lamport2012write21st}.
+IATC could be overlaid upon formally specified contents, where these are available.  Lamport's ``Temporal Logic of Actions+'' (TLA+) \cite{lamport1999specifying,lamport2014tla2} is one such formalism that could be used to model content-level expressions.  Higher-level discourse structure would then be exhibited somewhat along the lines of Lamport's own semi-formal ``structured proofs'' 
+\cite{lamport1995write,lamport2012write21st}.  However, unlike structured proof, IATC does not aim to reshape the way people do mathematics, but to model it more exactly.  As such, it constitutes groundwork for a future generation of computer systems that can collaborate with mathematicians and students in a way these potential users already understand. \citet{epstein2015wanted} highlights the ``extent to which a person believes that her work experience or product has been facilitated or improved by the collaboration'' as a key evaluation metric for assessing collaborative intelligent computer systems. The key metric at this stage is more basic, namely, we are interested in the degree to which IATC can represent real-world examples of mathematical practice in a way that can make them accessible to computational reasoning. After introducing the modelling approach, we use several examples to show that IATC is indeed satisfactory in this regard.
 
-Unlike structured proof, IATC does not aim to reshape the way people do mathe- matics, but to model it more exactly. As such, it constitutes groundwork for a future generation of computer systems that can collaborate with mathematicians and students in a way these potential users already understand. \citet{epstein2015wanted} highlights the ``extent to which a person believes that her work experience or product has been facilitated or improved by the collaboration'' as a key evaluation metric for assessing collaborative intelligent computer systems. The key metric at this stage is more basic, namely, we are interested in the degree to which IATC can represent real-world examples of mathematical practice in a way that can make them accessible to computational reasoning. After introducing the modelling approach, we use several examples to show that IATC is indeed satisfactory in this regard.
 
-%% \thesis{Argumentation theory can help us understand the way mathematical knowledge develops.}
-%% In order to better understand the processes of mathematical proof and
-%% communication, we turn to informal mathematical dialogues and
-%% expository texts as our primary sources of data. Improved
-%% understanding of mathematical practice can, in turn, inform the design
-%% of support tools for mathematicians.
 
-%% \paragraph{Computational tools for proof checking, automatic theorem proving, and computer algebra are well-established, however, they can only be used with formal, computationally explicit, content.}
-%% Translating proofs into formal languages constitutes an unrealistic
-%% demand for most mathematicians and students, and does little to address
-%% their day-to-day communication needs \cite{thurston1994proof,melis2005proof}.
-%% Furthermore, the existing mathematical literature is opaque to current computational systems,
-%% which rely on hand-coded knowledge bases entered in formal or
-%% constrained languages \cite{furse1990did,furse1994mathematics}.
-%% %
-%% Both data ingestion and end-user interaction could benefit from the use
-%% of an expressive modelling language that is closely related to the way
-%% mathematics is actually done.
 
-%% \paragraph{Our approach to modelling mathematical arguments is inspired by the general-purpose argument modelling formalism \emph{Inference Anchoring Theory} (IAT), introduced by \citet{reed2011dialogues}.}
-%% As its name suggests, IAT anchors logical inferences in discourse.
-%% IAT has been applied to mediation \cite{janier2017towards}, debates
-%% \cite{budzynska2014model}, and to paradoxes in ethotic argumentation
-%% \cite{budzynska2013circularity}, along with other real-world
-%% dialogues \cite{budzynska2013towards}.
-%% %%
-%% The \emph{Inference Anchoring Theory + Content} (IATC)
-%% framework we introduce is based on IAT, but with several
-%% significant modifications.  Most fundamentally,
-%% IATC is designed to bring to the surface the structural features inherent in mathematical content.
 
-%% \paragraph{Indeed, IATC could be overlayed on top of mathematics represented in more formal languages, where an informal text can be put in full or partial correspondence with a formal treatment.}
-%% Lamport's ``Temporal Logic of Actions+'' ({TLA}$^{+}$)
-%% \cite{lamport1999specifying,lamport2014tla2} is one candidate
-%% formalism that could be used to model content-level expressions, by
-%% analogy with Lamport's own semi-formal ``structured proofs''
-%% \cite{lamport1995write,lamport2012write21st}.
 
-%% \paragraph{Unlike structured proof, IATC does not aim to reshape the way people do mathematics, but to model it more exactly.}
-%% As such, it constitutes groundwork for a future generation of computer systems that can collaborate with mathematicians and students in a way these potential users already understand.
-%% \citet{epstein2015wanted} highlights the ``extent to which a person
-%% believes that her work experience or product has been facilitated or
-%% improved by the collaboration'' as a key evaluation metric for
-%% assessing collaborative intelligent computer systems.
-%% %%
-%% The key metric at this stage is more basic, namely, we are interested
-%% in the degree to which IATC can represent real-world examples of
-%% mathematical practice in a way that can make them accessible to
-%% computational reasoning.  After introducing the modelling approach, we
-%% use several examples to show that IATC is indeed satisfactory in this
-%% regard.
-
-%% Because these examples form the key piece of empirical evidence, we
-%% introduce them briefly here.  This this shows the scope and also the
-%% limitations of our current approach.
 
 \begin{itemize}
 \item Our first example is a school-level challenge problem that was
@@ -401,7 +337,6 @@ Unlike structured proof, IATC does not aim to reshape the way people do mathe- m
   tackled novel research, the problems in the MiniPolymath subseries
   were drawn from the Mathematical Olympiad, a premier competition for
   pre-college students.
-%%
 Six problems are given, and the examination takes place over
 two days with three problems to be solved each day.
 Whereas individual Olympiad participants
@@ -410,27 +345,22 @@ four-and-a-half hours allotted for that purpose, all four of the
 collaborative MiniPolymath efforts generated a solution.
 However, it should be noted that some of these solutions
 took more than 24 hours to develop.
-%%
 IATC can help us understand how the proof efforts progressed, and can
 potentially help us understand why they were (mathematically)
 successful.
 \end{itemize}
 
 The plan of the work is as follows.
-%%
 \textsection\ref{background} reviews previous research on mathematical
 argument, presents a brief introduction to Inference Anchoring Theory, and
 describes Lamport's structured
 proofs as an example of the state of the art for
 modelling informal mathematical knowledge.
-%%
 \textsection\ref{iatc} introduces IATC, describes the grammar of IATC markup,
 and describes the differences between this language and IAT.
-%%
 \textsection\ref{iatc-examples} presents our analysis of the examples
 outlined above, which have been marked-up with IATC in order to
 illustrate the relevant modelling concerns.
-%%
 \textsection\ref{discussion} summarises and reviews the contribution,
 situates our work in relationship to the broader literature, and
 outlines potential directions for further work.
@@ -460,34 +390,21 @@ conclusion, thus mirroring the logical structure of inference[.]  \cite[p.~146]{
 ``argument'' is used to describe a particular kind of interaction
 as well as the shared understanding extracted from these
 interactions, as ``evidence'' or ``proof.''
-%%   It is argument in the
-%% latter sense which is \emph{reason-giving}: it ``expresses a point of
-%% view on a question, and offers as support for this position one or
-%% more reasons'' \cite[p.~448]{hitchcock2017informal}.
 The purpose of IAT is to make the links between discourse and reasoning explicit.
-%%
 
 Concerning argumentation in a mathematical context, \citet[p.~39]{pedemonte2007} argues that
 ``analysis of the `content' is not sufficient to analyse all the cognitive aspects in
 the relationship between argumentation and proof.''
-%%
 A large part of mathematical discussion is in essence meta-discussion
 about meta-level objects, such as proof strategies that are
 suggested on the fly and debates about whether these strategies are
 likely to work as intended.
-%%
 
 \citet{mercier2011humans} distinguish
-%% Reasoning ``enables communicators to produce arguments
-%% to convince addressees who would not accept what they say on trust''
-%% and, on the other hand, ``enables addressees to evaluate the soundness
-%% of these arguments and to accept valuable information that they would
-%% be suspicious of otherwise'' (p.~72).
 arguments from inferences: 
 only in the case of arguments ``the reasons for drawing this
 conclusion on the basis of the premises are (at least partially)
 spelled out'' (p.~58).   
-%%
 By contrast, formal mathematics is typically based on the reductive assumption that
 ``mathematical reasoning may be identified with classical, deductive
 inference'' \cite[p.~25]{aliseda2003mathematical}.
@@ -502,13 +419,6 @@ Here are two examples of familiar patterns of reasoning that appear in MiniPolym
 \cite[\href{https://wp.me/pAG2F-41\#comment-3378}{19 July, 9:19 pm}]{tao2011imo}.
 \end{description}
 
-%% Proofs are concerned with what necessarily follows from accepted premises
-%% according to accepted inference rules.  There are, to be sure, other
-%% relevant perspectives on mathematics, for example, the question of how we come to
-%% accept or select certain premises and inference rules rather than
-%% others.  Here, our concern will be communicated reasoning in
-%% mathematical settings, looking at an evidence base that includes but
-%% is not limited to deductive proofs.
 
 %A modelling approach that they have developed will be described in Section \ref{iat}.
 
@@ -524,10 +434,6 @@ this is because proofs offer certainty, while arguments cannot
 \cite{Dufour2013}.
 Nevertheless, communication of reasons and reasoning
 can be found throughout mathematical practice.
-%% Aspects of
-%% mathematical communication that go beyond
-%% inference, and that support it, are particularly prevalent
-%%
 \citet{pedemonte2007} highlights the use of inductive and abductive logic
 as well as deduction in mathematical processes that move from
 ``from conjecturing to the construction of proof [to] the proof as
@@ -535,45 +441,15 @@ product,'' and in which ``content rather than formal criteria''
 can guide the proving process.  \citet{Dufour2013} gives examples
 of argumentation ``not only before and during the proof but also after,
 at least as long as it can be criticized'' (p.~74).
-%% For example, is not appropriate to conclude
-%% from $f(n)=f(-n)$ that $n=-n$ \cite[p.~141]{dove2009towards},
-%% because functions and numbers are different kinds of mathematical content
-%% with different associated rules.
-%%
-%% %\citet{pedemonte2007} disagrees and sees them as something more general.
-%% %%
-%% ``Argument'' may in some cases stand for the concept of an
-%% , one hallmark being that
-%% such presentations admit multiple semantically distinct formalisations
-%% .  On the other hand, ``argument'' may stand
-%% for a still more abstract 
-%% which would not admit formalisation without the addition of
-%% significant further details.  Yet again, in mathematics as in other
-%% disciplines, the concept of ``argument'' is sometimes associated with
-%% social phenomena of 
-%%
 Other scholars have observed features such as these:
-%%
 \begin{itemize}
-%% The relationship between mathematical reasoning and everyday reasoning
-%% has been debated \cite{kisielewicz2015new,aberdein2015commentary}.
 \item Published mathematical writing tends to be particularly explicit about
 reasons and conclusions \cite[p.~149]{dove2009towards}.
 \item 
 Not only the \emph{Prover} but also the \emph{Skeptic}
 ``has an important role to play, namely to ensure that the proof is persuasive, perspicuous, and valid'' \cite[p.~2618]{novaes2016reductio}.
-%% \citet{aberdein2010virtue} 
-%% has suggested that for argumentation to be successful,
-%%  communication must sufficiently manifest several ``virtues of
-%% argument'', broadly typologised as \emph{willingness to engage in
-%%   argumentation}, \emph{willingness to listen to others},
-%% \emph{willingness to modify one's own position}, and \emph{willingness
-%%   to question the obvious}.
-%%
 \item On the way to a proof, degrees of
   confidence about the conclusions to be drawn may be discussed \cite[p.~17]{inglis2007modelling}.
-%%
-%%
 \item Mathematical meanings need to be interpreted, and this tends to be a struggle  \cite[p.~360]{vanOers}.
 \end{itemize}
 
@@ -586,14 +462,8 @@ example in this genre.  Once we have developed a suitable apparatus,
 Section \ref{iatc-examples} will tackle several
 real-world examples, including a detailed reexamination of the
 dataset studied by Pease and Martin.
-%% , which is sourced
-%% from a public discussion of a problem that appeared in an advanced
-%% high school level mathematical competition.
 
 
-%% \paragraph{Carrascal emphasises that mathematical communication has a rhetorical aspect which depends on context.}
-%% %%
-%% %%
 
 ``Blog maths'' \cite{barany2010b} and other online discussions,
 for example, on the
@@ -601,7 +471,6 @@ question-and-answer site MathOverflow, can ``tell us
 about mathematicians' attitudes to working together in public'' as
 well as the ``kinds of activities that go on in developing a proof''
 \cite{Martin2015}.
-%%
 In the process of creating a proof or mathematical theory, divergent
 understandings are negotiated using shared concepts, definitions, and
 standards for proof, even as the concepts evolve.  Along these lines,
@@ -619,18 +488,15 @@ a specific, demanding, domain of human reasoning.\footnote{\label{fn:technical-d
   DungOMatic \cite{snaith2010pipelining} to calculate the grounded
   extension, which in this case represents the currently accepted,
   collaboratively constructed, proof or theory under discussion.}
-%%
 \citet{dauphin2018aspicend} produced a similar model of
 natural-deduction style arguments, explanations,
 and the ``\emph{prima facie} laws of logic'' such as may be debated in
 work on mathematical foundations.
-%%
 These prior efforts focus on developing rules that give a plausible codification
 of mathematical process.  Our concern is different,
 but complementary.  We are interested in a better
 understanding of what is actually said in mathematical arguments, and on
 the reasoning that is conveyed.
-%%
 Accordingly, we will adapt a general-purpose argument modelling
 approach, \emph{Inference Anchoring Theory}, which is described in the
 following section.
@@ -658,7 +524,6 @@ relationships are typically identified by matching locutions against
 known argument schemes, e.g., an `Argument from Positive Consequences'
 is associated with two transitions, `challenging' and `substantiating'
 \cite{walton08}.
-%%
 \citet{budzynska2014towards} describe Inference Anchoring Theory in terms of three components:
 \begin{quote}
 \begin{enumerate}[align=Center,label=(\roman*),labelsep=4pt,leftmargin=*,labelwidth=!]
@@ -685,13 +550,11 @@ that was not directly mentioned in the list \ref{transitions-item}--\ref{connect
 specifically,
 this figure uses an \emph{{`}implicit{'} speech-act}
 to anchor propositional content on a transition rather than a locution.
-%%
 Here, when a speaker asserts `$A$' and their interlocutor says
 `\emph{No}', the logical content `$\neg A$' is
 attached to the transition, rather than to the negating word.
 The basic rationale is that the locution `\emph{No}' cannot be made sense
 of without the preceding context.  There has been some debate about what to do about this.
-%%
 \citet{botting2015inferences} says that the choice to
 anchor arguments on transitions is a conceptual mistake.  
 However, for the creators of IAT, the reason illocutionary acts can
@@ -729,14 +592,12 @@ would not immediately know that `$A^\prime$' is intended to \emph{support} `$A$'
 without Wilma's intermediate question which explicitly requested such
 support.  Given the context, the intended
 inference is is clear.
-%%
 Thus, both examples serve to illustrate that
 \begin{quote}
 the connection between locutions in a dialogue has an inferential
 component beyond any that may hold between the contents of those
 locutions \cite{reed2011dialogues}.
 \end{quote}
-%%
 In short, IAT studies ``the way in which the rules of dialogue
 influence the construction of argument''
 \cite{budzynska2016theoretical}.
@@ -826,7 +687,6 @@ find very tedious.  [\lips] My feeling is that informal proof sketches
 [\lips] to explain the crucial ideas in each result would be more
 appropriate.
 \end{quote}
-%%
 Unlike structured proofs, IATC is intended to express the typical processes
 by which proofs are generated in standard practice, rather than
 make the process of proving and reading proofs easier.
@@ -848,7 +708,6 @@ utterances and with mapping the logical relationships that obtain
 between them.  However, various mathematical objects---\citet{larvor2012think} mentions ``diagrams, notational expressions,
 physical models, mental models and computer models''---are more
 comfortably thought of as non-propositional in nature.  
-%%
 Discussions about proofs have been theorised
 formally using the notion of \emph{proof plans}, which are constructed
 and transformed using explicit heuristics and tactics
@@ -877,24 +736,17 @@ x)(\exists x^{-1})(xx^{-1} = x^{-1}x = e)$. [punctuation modified]
 Karttunen's concept of ``discourse referents,'' illustrated in the
 quote above, underlies Discourse Representation Theory \cite{kamp1993discourse}
 and its extensions.
-%%
 While the developers of IAT acknowledge the generality of Structured
 Discourse Representation Theory (SDRT), in particular, they criticise
 it for making ``assumptions of context-independent semantics''
 \cite{budzynska2016theoretical}.
-%%   The two dialogues 
-%% diagrammed in Figures  \ref{fig:TypicalIAT} and \ref{fig:A-not-A}
-%% illustrate that statements often cannot be meaningfully understood
-%% outside of the conversations in which they are embedded.
 Nevertheless, DRT has been successfully applied to model some aspects
 of mathematical discourse,
-%% (e.g., by \citet{zinn2004understanding}),
 and we will discuss that work further in Section \ref{discussion},
 and contrast it with our orientation here.
 
 For now, we emphasise that IATC differs from IAT in its approach to
 context.
-%%
 Specifically, IATC sets the notion of dialogical relations to one side, and
 instead connects locutions to each other directly in the content and
 intermediate (meta-discussion) layers. 
@@ -941,11 +793,7 @@ Bob's first to his last statement in the dialogue.
 However, that would still neglect Bob's so-far implicit reasoning
 to the effect that $A^\prime$ is (potentially) not vulnerable to objection $B$.
 If the dialogue continued from this point, detailed relationships between the constituent contents of `$A^\prime$' and `$B$' may need to be discussed, and an IATC analysis would be able to unpack these and account for the details.
-%%   For example, $A^\prime$ relates explicitly to the content of
-%% Bob's original statement ``$A$'', and is modelled as a reformation of that earlier
-%% statement.  This suggests a long-range transition between Bob's first and second locutions.  Our current considerations  
 
-%%%
 \paragraph{In line with these design decisions, and inspired by the specific features of mathematical dialogue and exposition, IATC introduces a range of extra machinery to the IAT framework to model the relationships between mathematical objects and propositions, along with an array of dialogue moves related to the strategic aspects of proof.}
 Unlike IAT, we make no attempt to cover argumentation in law, natural
 science, or interpersonal mediation, fields in which the norms that
@@ -976,7 +824,7 @@ collects reference examples of short texts marked up with these codes.
 \texttt{Suggest} (\emph{s}) & Suggest a strategy \emph{s}.\\
 \texttt{Judge} (\emph{s}, \emph{v}) & Apply a heuristic value judgement \emph{v} to some statement \emph{s}.\\
 \texttt{Query} (\emph{s}) & Ask for the truth value of statement \emph{s}.\\
-\texttt{QueryE} (\{$p_i$($X$)\}) & Ask for the class of objects \emph{X} for which all of the properties $\{p_i\}$ hold.
+\texttt{QueryE} (\{$p_i$($X$)\}) & Ask for the class of objects \emph{X} for which all the properties $\{p_i\}$ hold.
 \end{tabular}
 
 \end{mdframed}
@@ -1019,7 +867,6 @@ show an example tagging in which the multiple layers of interpretation are inclu
 However, perfect agreement about how to treat such
 cases is not intended; the IATC framework is designed to account for
 flexibility in interpretations.
-%%
 The additional tags in Table \ref{iatc-table:2} were not at first
 divided into the present categories, but repeated analysis quickly
 revealed structural content relations, as well as inferential
@@ -1030,7 +877,6 @@ judgements and reasoning tactics.  For example, the difference between
 deeming a statement \texttt{useful} and suggesting it as a
 \texttt{goal} could depend completely on how polite or how bold the
 person making the utterance wished to be!
-%%
 
 
 \begin{table}[ht]
@@ -1051,7 +897,7 @@ person making the utterance wished to be!
 \texttt{has\_property} (\emph{o}, \emph{p}) & Object \emph{o} has property \emph{p}.\\
 \texttt{instance\_of} (\emph{o}, \emph{m}) & Object \emph{o} is an instance of the broader class \emph{m}.\\
 \texttt{indep\_of} (\emph{o}, \emph{d}) & Object \emph{o} does not depend on the choice of object \emph{d}.\\
-\texttt{case\_split} (\emph{s}, \{$s_i$\} . \emph{i}) & Statement \emph{s} is equivalent to the conjunction of the $s_i$'s.\\
+\texttt{case\_split} (\emph{s}, \{$s_i$\}) & Statement \emph{s} is equivalent to the conjunction of the $s_i$'s.\\
 \texttt{wlog} (\emph{s}, \emph{t}) & Statement \emph{t} is equivalent to statement \emph{s} but easier to prove.\\
 \end{tabular}
 
@@ -1124,15 +970,11 @@ Our performatives have \emph{slots}, which are filled by
 \emph{statements} or \emph{objects}.  Statements may be represented in various ways:
 in unparsed natural language, as symbolic tokens that serve as
 shorthand for such statements, or in some representation language.
-%%
-%%
 \paragraph{The other relations are clustered into segments treating \emph{Inferential Structure}, \emph{Heuristics and Value Judgments}, \emph{Reasoning Tactics}, and \emph{Content-Focused Structural Relations}.}
-%%
 \paragraph{The associated grammatical categories are given the following abbreviations in our linear notation: `\texttt{rel}', `\texttt{value}', `\texttt{meta}', and \texttt{struct}'.}  For example, the expression
 `\texttt{perf[Assert]}(\texttt{rel[has\_property]}(\emph{o},
 \emph{p}))' denotes the assertion of the statement
 ``object \emph{o} has property \emph{p}.'' 
-%%
 IATC allows direct, explicit, statements about objects, propositions, and statements.  For example, `\texttt{perf[Assert]}(\texttt{used\_in} (\emph{o}, \emph{s}))' denotes the assertion of the statement ``object $o$ appears in statement $s$.''
 
 We have two notational strategies that call attention to features of discourse or content that are
@@ -1142,13 +984,6 @@ Several examples of this notational strategy appear
 in Section \ref{iatc-examples:gowers}.
 Similarly, content-focused structural relations are sometimes introduced without an attached performative, whenever they have been noticed by the analyst.
 
-%% This notation is inspired
-%% by McCarthy's m-expressions
-%% \citeyearpar{mccarthy1960recursive}, whereas the other more compressed notation is
-%% s-expression based and is used when grammatical categories do not need
-%% to be explicitly presented, e.g.,
-%% `\texttt{(Suggest~(goal~perm\_view\_mod))}' is equivalent to
-%% `\texttt{perf[Suggest](meta[goal](perm\_view\_mod))}'.
 
 Figure \ref{fig:QuickIATCexample} includes examples
 of this latter usage.  This figure represents the analysis of a short
@@ -1203,12 +1038,11 @@ Nor do these relationships describe mathematical texts at the
 level of formality found in proof checking systems, or the level of
 detail found in some other theorisations of discourse.
 Thus, in the future IATC should not be limited to the set of tags presented here.
-For example, we have found uses for the value-judgments
+For example, we have found uses for the value judgments
 `\texttt{easy}', `\texttt{beautiful}', and `\texttt{useful}', but it is
 quite plausible that future work would find use for values such as
 `\texttt{efficient}', `\texttt{generative}', or something else.
 Similarly, useful additions may be found in the other grammatical categories.
-%%
 The evidence from our examples in Section \ref{iatc-examples} is that
 these major grammatical categories---performatives, inferential
 relations, meta-level reasoning, value judgments, and content
@@ -1265,21 +1099,16 @@ that exhibit informal, expository, and discursive features of mathematical reaso
 The presentation here is a novel and self-contained synthesis and expansion of
 remarks made in previous papers
 \cite{corneli2017towards,corneli2017modelling,pease-and-martin}.
-%%
 The three examples collectively show the richness of mathematical argument, and were selected
 to match the three aims indicated above:
-%% The first example concerns an argument, prepared in advance, that informally outlines a solution to a tricky but not particularly advanced mathematical problem.  
 \begin{itemize}
 \item Section \ref{iatc-examples:gowers}: A carefully spelled out informal solution to a tricky but non-technical mathematical problem serves to  illustrate the thought processes involved in successful mathematical problem solving.  The example shows how IATC captures this sort of thinking.
-%% The second example comes from a didactic but nevertheless off-the-cuff discussion of a more technically advanced question.
 \item Section \ref{iatc-examples:mathoverflow}: A discussion of the relationships between, and merits of, different mathematical questions exhibits a level of abstraction above that needed in an individual proof.  We explore the ramifications for explicit representations of the reasoning involved.
-%% The third example again considers a proof, but one that was developed in the context of an experiment in collaborative proof contruction, involving a large number of discussants.
 \item Section \ref{iatc-examples:minipolymath}: A multi-participant dialogue that develops a challenging but not highly technical proof  casts light on processes of mathematical collaboration and mathematical reasoning.  An analysis of this material using IATC allows us to explore the process of proof-construction in detail.
 \end{itemize}
 In each of the following subsections, we give more details of the
 context of each example, before presenting our analysis and comments.
 
-%% Section to be reworked without s-expressions 
 
 
 \subsection{Making the reasoning explicit in the solution to a challenge problem}\label{iatc-examples:gowers}
@@ -1297,7 +1126,6 @@ an alternative path of enquiry seeks to describe the heuristic process
 of proving theorems in more cognitively plausible terms. 
 In particular, one relevant question to ask is
 how (human) mathematicians avoid large searches \cite{gowers-talk-ini}.
-%%
 IATC can contribute to the further development of this effort,
 by giving a uniform but expressive way to outline the
 process of developing proofs.
@@ -1353,7 +1181,6 @@ The answer is indeed $9$.
 \caption{A ``magic leap'' challenge problem and its solution, presented by Timothy Gowers as part of a public lecture at the University of Edinburgh, November 2, 2012.  (Reproduced from notes taken at the lecture.)\label{fig:magic-leap}}
 \end{figure}
 
-%%
 \paragraph{Our chosen example is a ``magic leap'' problem presented in a public lecture by Timothy Gowers, describing joint work with Mohan Ganesalingam \citeyearpar{gowers-talk}.}
 The reasoning was communicated by a combination of speech and marks
 on a chalkboard, and is reproduced in Figure \ref{fig:magic-leap}.
@@ -1373,10 +1200,8 @@ exploration of the question, and Figure
 \ref{fig:challenge-problem-strategy} establishes a `\texttt{strategy}'
 based on that exploration (``The trick might be: it is close to
 something we can compute'').
-%%
 Figure \ref{fig:challenge-problem-middle-bit} opens the door to
 applying the strategy.
-%%
 The central part of the proof that `\texttt{implements}' the strategy
 is highlighted in Figure \ref{fig:nested}.
 
@@ -1509,9 +1334,7 @@ symbolically \texttt{generalise}s the initial question (Figure
 \ref{fig:challenge-problem-strategy}).  
 That is, rather than considering $(\sqrt{2}+\sqrt{3})^{2012}$ we
 now consider $(\sqrt{2}+\sqrt{3})^{m}$.
-%%
 (NB.~an edge connecting the  `\texttt{generalise}' node to the problem statement has been omitted.)
-%%
 However, the concept of generalisation remains implicit in the
 corresponding portion of the structured proof.  Indeed, Step \pfref{2}
 is not a good match for the requirements of structured proof at all,
@@ -1541,13 +1364,12 @@ Collectively, the fact that
 $(\sqrt{2}+\sqrt{3})^{2012}+(\sqrt{3}-\sqrt{2})^{2012}$
 sums to ``some integer'' and the fact that $(\sqrt{3}-\sqrt{2})^{2012}$
 is sufficiently small \texttt{implies} the result.
-%%
 Step \pfref{5} shows the details of the final computational check.
 
 \paragraph{Several objections could be raised about the structured proof presented in Figure \ref{fig:gowers2012-ala-lamport}, most notably to the inclusion of a failed lemma in Step \pfref{2}.}
 However, as a source of information about the intuition behind the
-proof, this failure is valuable.  Objections to the IATC treatment 
-are certainly also possible, but it it clear that this method helps to 
+proof, this failure is valuable.  While objections to the IATC treatment 
+are also possible, it is clear that this method helps to 
 make explicit features of the proof process that remain implicit in the
 structured proof.  In particular,
 analogies, strategies, and relationships between methods are
@@ -1581,8 +1403,6 @@ something we can compute.''  The intermediate conclusion reached in this phase o
 \FloatBarrier
 \subsection{Towards computable models of mathematical reasoning via IATC: A Q\&A example}\label{iatc-examples:mathoverflow}
 
-%% In Section \ref{iatc-examples:mathoverflow}, we describe how IATC can
-%% make the contents of mathematical dialogues amenable to further computational analysis.
 Contributors to discussions about mathematics on MathOverflow do more than just talk about proofs.
 \begin{quote}
 The presentation is often speculative and informal, a style which
@@ -1592,27 +1412,12 @@ challenge. \cite{martin2013does}
 \end{quote}
 
 
-%% \thesis{As indicated in the Introduction, a metric for IATC's success
-%%   is the degree to which it can represent real-world examples of
-%%   mathematical practice in a way that makes them accessible to
-%%   computational reasoning.}  This section gives evidence for the
-%% plausibility of such an enterprise.
 
-%% \begin{figure}[h]
-%% {\centering
-%% \fbox{\includegraphics[width=.9\textwidth]{finite-and-infinite-groups}}
 
-%% \par}
-%% \caption{Screenshot of a question about group theory posted to MathOverflow:
-%% ``I have seen this problem, that if $G$
-%% is a finite group and $H$ is a proper subgroup of $G$ with finite index then $ G \neq \bigcup\limits_{g \in G} gHg^{-1}$. Does this remain true for the infinite case also?''
-%% \label{fig:mathoverflow-question}}
-%% \end{figure}
 
 \paragraph{IATC allows the argumentation aspects of mathematical dialogues to be represented as explicit graphical structures, which gives a plausible basis from which to develop an explicit computational model of the reasoning steps that are implied in mathematical argumentation.}
-%%
 \paragraph{\citet{corneli2017towards} showed how IATC could be used to create graphical models of the discussion that develops around a question posted on MathOverflow.  Here we will remark further on implications for computational modelling.
-The question, which was given the title  ``Group cannot be the union of conjugates'',\footnote{\url{http://mathoverflow.net/q/34044}}} is as follows:
+The question, which was given the title  ``Group cannot be the union of conjugates'' \cite{chandrasekhar2010group} is as follows:
 
 \medskip
 
@@ -1639,7 +1444,6 @@ The question thus implicitly outlines an argument by analogy:
 \end{itemize} 
 The essence of the question is to ask whether the mathematical facts
 align with this schematic argument.
-%%
 As it turns out, this question is answered in the affirmative.
 Shortly after the question was asked, one discussant make the terse
 comment ``the case of infinite $G$ readily reduces to the case of
@@ -1649,7 +1453,6 @@ proof of \ref{qa:rhs:prop}.
 In the mean time, other discussants had proposed and addressed several
 alternative formulations of the question.  An important distinction hinges on the
 interpretation of the phrase ``\emph{infinite case}.''
-%%
 An alternative proposition that incorporates some of the suggested
 revisions is as follows:
 \begin{enumerate}[start=2,label=(\emph{P\arabic*}$^\prime$),ref=(\emph{P\arabic*}$^\prime$),leftmargin=1cm]
@@ -1665,7 +1468,6 @@ which proof certainly plays a role, but is nevertheless of secondary
 interest compared with asking interesting questions, and thinking
 about how different questions relate to each other.
 What would be necessary to represent this sort of dialogue computationally?
-%%
 Expressing propositions like \ref{qa:lhs:prop} in IATC is 
 straightforward, though, as we noted, the content layer is not
 directly modelled in this representation language.  The
@@ -1683,11 +1485,6 @@ perf[Assert](
                  \emph{union_over}(\emph{conjugates}(H,g),\emph{elements}(g,G))))))
 \end{Verbatim}
 
-%% \paragraph{As an illustration of our representation strategy, Listing \ref{listing:qa} shows how several \texttt{Assert}ions and one \texttt{Question} written in IATC's s-expression notation can express the proposed analogy between \ref{qa:lhs:prop} and \ref{qa:rhs:prop}, above, in such a way that the statements become available to subsequent computational reasoning.}
-%% Further details of the ensuing dialogue could be represented
-%% similarly, but this excerpt is sufficient to show the style.
-%% The listing is structured to illustrate the interaction between an
-%% analyst and an interactive computer system.  
 Processing such expressions to build a model of a dialogue
 will require adding numerous stanzas like this one, each rooted on an IATC
 performative, into one graph database that records the relationships
@@ -1723,71 +1520,6 @@ of reasoning afforded by language elements in Tables
 \ref{iatc-table:1} and \ref{iatc-table:2} do not themselves
 encode the meta-level reasoning associated with such graph transformations.
 
-%% \begin{listing}{Importing a question that posits and probes an analogy between statements about finite and infinite mathematical groups \label{listing:qa}}
-%% {\fontsize{9}{10.5}
-%% \begin{Verbatim}[commandchars=\\\{\}]
-%% \textbf{1>} (read-tree  '(Assert
-%%                  (implies
-%%                   (conjunction (finite-group G)
-%%                                (subgroup H G)
-%%                                (has_property (index H G)
-%%                                              finite))
-%%                   (not (equal G
-%%                               (union (times g
-%%                                             H
-%%                                             (inverse g))
-%%                                      :over g :in G))))))
-%% \end{Verbatim}
-%% \vspace{-1.2\baselineskip}
-%% \begin{Verbatim}[fontshape=it,commandchars=\\\{\},codes={\catcode`$=3\catcode`^=7}]
-%% $\rightarrow$ (Assert123
-%%     (implies124
-%%      (conjunction125 (finite-group G)
-%%                      (subgroup H G)
-%%                      (has_property126 (index H G)
-%%                                       finite))
-%%      (not127 (equal G (union (times g
-%%                                     H
-%%                                     (inverse g))
-%%                              :over g :in G)))))
-%% \end{Verbatim}
-%% \begin{Verbatim}[commandchars=\\\{\}]
-%% \textbf{2>} (read-tree
-%%     '(Assert
-%%       (analogy (implies124
-%%                 (conjunction125 (finite-group G)
-%%                                 (subgroup H G)
-%%                                 (has_property126 (index H G)
-%%                                                  finite))
-%%                 (not127 (equal G (union (times g
-%%                                                H
-%%                                                (inverse g))
-%%                                         :over g :in G))))
-%%                (implies
-%%                 (conjunction (infinite-group G)
-%%                              (subgroup H G)
-%%                              (has_property (index H G)
-%%                                            finite))
-%%                 (not (equal G
-%%                             (union (times g
-%%                                           H
-%%                                           (inverse g))
-%%                                    :over g :in G)))))))
-%% \end{Verbatim}
-%% \vspace{-1.2\baselineskip}
-%% \begin{Verbatim}[fontshape=it,commandchars=\\\{\},codes={\catcode`$=3\catcode`^=7}]
-%% $\rightarrow$ (Assert128 (analogy129 (implies124 ...)
-%%                           (implies130 ...)))
-%% \end{Verbatim}
-%% \begin{Verbatim}[commandchars=\\\{\}]
-%% \textbf{3>} (read-tree '(Question implies130))
-%% \end{Verbatim}
-%% \vspace{-1.2\baselineskip}
-%% \begin{Verbatim}[fontshape=it,commandchars=\\\{\},codes={\catcode`$=3\catcode`^=7}]
-%% $\rightarrow$ (Question134 implies130)
-%% \end{Verbatim}
-%% }
-%% \end{listing}
 
 %\FloatBarrier
 
@@ -1804,14 +1536,8 @@ The earlier analysis by Pease and Martin proposed a typology of comment types, b
 \emph{examples},
 \emph{conjectures},
 \emph{concepts},
-%% including analogies,
-%% conjecture-generated concepts, (counter)example-generated
-%%   concepts and new conventions;
 \emph{proofs},
-%including proof strategies and the identification of proof-relevant
-%  properties;
 and \emph{other}.  
-%%
 An IATC analysis of the same data gives a more detailed picture of the anatomy of the comments that fall within these intuitive categories.  We use this to build a relatively detailed understanding of what went on in the process of constructing this interesting collaborative proof.
 
 
@@ -1830,15 +1556,13 @@ layer.
 which we tagged into IATC in its entirety.}
 As an indicative sample, the first three comments and their tags are shown in Figure
 \ref{fig:mpm3-example}.
-%% \footnote{The problem under discussion was sourced from the 2011 International Mathematical Olympiad: ``Let $S$ be a finite set of at least two points in the plane. Assume that no three points of $S$ are collinear. A windmill is a process that starts with a line $\ell$ going through a single point $P \in S$. The line rotates clockwise about the pivot $P$ until the first time that the line meets some other point $Q$ belonging to $S$. This point $Q$ takes over as the new pivot, and the line now rotates clockwise about $Q$, until it next meets a point of $S$. This process continues indefinitely. Show that we can choose a point $P$ in $S$ and a line $\ell$ going through $P$ such that the resulting windmill uses each point of $S$ as a pivot infinitely many times.''}
 Figure \ref{fig:grammar-categories} shows how tags from IATC's five grammatical
 categories were distributed over time.  Thus, for example, we see
 `\texttt{value}' tags used early in the discussion as strategies are
 being considered, and again later in the discussion when solutions are
 being vetted.
-%%
 Figure \ref{fig:alternative} gives another view of the timeline,
-showing how the comments were categorised into the the 5-part typology
+showing how the comments were categorised into the 5-part typology
 from Pease and Martin.  In the initial
 categorisation developed for that paper, comments were allowed to be
 in multiple categories at once.
@@ -2047,19 +1771,12 @@ These usages reflect social
 values as well as mathematical semantics.  E.g., one can express support for
 an idea by underscoring one's belief in an implication, as in the comment
 ``Yes, it seems to be a correct solution!'' \cite[\href{https://wp.me/pAG2F-41\#comment-3402}{July 19, 9:35 pm}]{tao2011imo}.
-%% ; one may also retract an assertion as part of gentle apology: ``I
-%% misunderstood the question'' in comment 7.2.1.1, and ``No. This
-%% example is false. :)'' in comment 14.2.1.1.
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[trim=3cm 1.2cm 3cm 1.2cm,clip=true,width=\textwidth]{grammar-categories-revised}
 \end{center}
 \caption{Timeline of the MiniPolymath 3 dialogue showing the IATC grammar categories used in the tagging.   Comments are binned into 5 minute intervals.  The first interval is 8:05-8:09 and the last is 9:50-9:59, inclusive.
-%%  For example, the least-active window was 9:05-9:09, which featured four comments
-%% 9:05 pm perf[define](smallest_angle)	Concept
-%% 9:06 pm perf[challenge](forall_exists_problem, too_many)	Other
-%% 9:08 pm perf[assert](rel[instance_of](convex_hull_stuck, equi_tri_stuck))\newline perf[query](rel[stronger](unworking_path, convex_hull_stuck))	Conjecture
 \label{fig:grammar-categories}}
 \end{figure}
 
@@ -2068,10 +1785,6 @@ an idea by underscoring one's belief in an implication, as in the comment
 \includegraphics[trim=3cm 1.2cm 3cm 1.2cm,clip=true,width=\textwidth]{alternative}
 \end{center}
 \caption{Timeline of the MiniPolymath 3 dialogue showing comments categorised into five categories: Concept, Conjecture, Proof, Examples, and Other.
-%%  For example, the least-active window was 9:05-9:09, which featured four comments
-%% 9:05 pm perf[define](smallest_angle)	Concept
-%% 9:06 pm perf[challenge](forall_exists_problem, too_many)	Other
-%% 9:08 pm perf[assert](rel[instance_of](convex_hull_stuck, equi_tri_stuck))\newline perf[query](rel[stronger](unworking_path, convex_hull_stuck))	Conjecture
 \label{fig:alternative}}
 \end{figure}
 
@@ -2170,7 +1883,6 @@ typically requires a mathematically trained annotator.}
 \end{itemize}
 \citet{corneli2018social} survey other relevant frameworks that might
 form extensions for a future version of IATC.
-%%
 More general-purpose formalisms like the W3C's
 ``PROV'' \cite{groth2013prov} would allow us to say something about
 the provenance and evolution of concepts, but would have nothing to
@@ -2189,50 +1901,9 @@ he opted to focus exclusively on mathematics in the ``formal mode,''
 leaving informal communication about matters such as
 ``interestingness'' to one side, because they bring with them a
 host of additional complications \cite[pp.~7--8]{ganesalingam2013language}.
-%%
-%% developed within the context of the Naproche project---short
-%% for ``Natural language Proof Checking''---which aimed to
-%% develop ``a controlled natural language (CNL) for mathematical texts
-%% which can be transformed automatically into equivalent first order
-%% formulas by methods of computational linguistics''
-%% \cite{cramer2009naproche}.  %% Despite its long term vision of ``a
-%% %% future computer program which could support mathematicians as they
-%% %% write their mathematical proofs in the usual language employed by
-%% %% mathematicians for this purpose'' \cite[p.~1]{cramer2013proof},
-%% However, despite the project's name,
-%% in pursuing these aims, the controlled natural language
-%% that was developed remained ``far
-%% removed from that of the language of mathematics''
-%% \cite[p.~15]{ganesalingam2013language}.  
-%%
-%% Similarly to the Naproche project,
-%% Zinn's earlier project had focused on checking proofs.
-%% He was able to sucessfully parse and check two elementary
-%% proofs written in natural language.
-%% A detailed summary of the approach appears in
-%% \citet{zinn2006supporting}, and
-%% \citet[p.~22]{cramer2013proof} provides
-%% a succinct review.
-%% The linguistic analysis was deemed shallow
-%% by later investigators (\emph{ibid}.).
-%% From our point of view, there is another fundamental concern.
-%% Zinn took the perspective that
-%% \begin{quote}
-%% ``the semantics of an informal mathematical argument is its corresponding
-%% formal proof, and that discourse understanding in this text genre is defined by generating a formal proof
-%% from the informal one'' \cite[p.~1]{zinn2004understanding}.
-%% \end{quote}
-%% This is philosophically somewhat dubious, as has
-%% been argued by \citet{tanswell2015problem},
-%% and our examples may also serve to illustrate.
-%% Moreover, in such an approach, any parts
-%% of mathematical communication not having to do with proof are simply
-%% left out in the analysis.
 From a linguistic point of view, DRT is useful in a mathematical setting, in the first instance,
 because of its core ability to express ``legitimate antecedents for anaphor''
 \cite[p.~50]{ganesalingam2013language}.
-%% This was illustrated in Section \ref{iatc} with an example from 
-%% \citet{karttunen1976discourse}.
 In Ganesalingam's work, this basic feature is extended to allow
 sidelong references to definite descriptions
 (such as `the set of natural numbers')
@@ -2245,16 +1916,13 @@ Specifically, this allows one to infer from statements such as
 The associated requirement of combining semantics and pragmatics \cite[p.~336]{doi:10.1093/jos/9.4.333}
 is reminiscent of our treatment of unspoken assertions
 and unstated features of content in our IATC-based analyses.
-%%
 To continue the comparison, Ganesalingam's adaptations of DRT
 overcame limitations, having to do with quantifier scoping, that constrained
 earlier type-theoretic analyses \cite[pp.~81--82]{ganesalingam2013language}.
 This is broadly similar to our use of nested structure in Section \ref{iatc-examples:gowers}.
-%%
 Indeed, \citet{sowa2000knowledge} shows that several different approaches
 to nested structure (including DRT)
 are all mutually equivalent from a logical point of view.
-%% 
 As indicated by
 \citet{doi:10.1093/jos/9.4.333},
 pragmatics is relevant for DRT-based models
@@ -2266,18 +1934,13 @@ IAT accounts for similar issues by making reference to dialogue norms,
 but we have seen that for mathematical dialogues,
 detailed content- and context-specific issues need to be
 taken into consideration at each stage.
-%%
 The models of content evolution used by
 \citet{ganesalingam2016fully} to keep track of proof generation were
 structurally similar to the DRT-based models developed by
 \citet{ganesalingam2013language}: in this case, the evolution was
-governed by a limited set of reasoning tactics.  Our work with IATC shows some of the
-features of mathematical reasoning, like \texttt{analogy}, that future
-heuristics would need to account for in order to model informal mathematics.
-Understanding how context and content are taken into account in mathematical
-argument remains very much an open research problem.
-%% As we observed in Section \ref{iatc-examples:mathoverflow}, work on the
-%% informal part of mathematics requires attention too.
+governed by a limited set of reasoning tactics.  Our work with IATC highlights 
+features of mathematical reasoning, like \texttt{analogy}, that more
+general heuristics will need to account for.
 
 \paragraph{There are other resources available which could further expand IATC's offerings in this regard.}
 For example, a recent special issue of \emph{Argument \& Computation} \cite{ac-special-issue} includes papers detailing the usefulness of
@@ -2304,8 +1967,7 @@ The efforts can be seen as complementary: \citet{Bundy20130194} has argued that 
 One promising approach to modelling process combines argumentation and multi-agent
 systems
 \cite{modgil2007towards,maghraby2012automated,Robertson2012}.
-%%
-However most approaches to modelling specifically \emph{mathematical}
+However, most approaches to modelling specifically \emph{mathematical}
 agents have had significant limitations.
 %
 Thus, for example, \citet{fiedler2007argumentation} have described the difficulty of
@@ -2357,7 +2019,7 @@ generation of mathematics tutoring software and digital assistants
 that engage their users in thought-provoking dialogues.
 
 \section{Acknowledgements}
-Our anonomyous reviewers offered comments that improved the paper.
+Our anonymous reviewers offered comments that improved the paper.
 The authors also thank Katarzyna Budzynska, Alan Bundy, Pat Hayes, Raymond Puzio, and Chris Reed for helpful discussions, and acknowledge the support of fellow researchers in the ARG-Tech group at the University of Dundee, and the DReaM group at the University of Edinburgh.  Figures were drawn using IHMC CmapTools, the Python libraries matplotlib and plotly, and the TikZ package for \LaTeX.
 
 \bibliographystyle{spbasic}      % basic style, author-year citations
