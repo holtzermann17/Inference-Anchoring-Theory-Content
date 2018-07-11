@@ -1,0 +1,270 @@
+(defun tabulate ()
+  ;; We are going to make a table of data, showing "facets" vs IATC "relations" (structural and performative)
+  ;; First we put in the columns of our data table
+  (let ((facets '("Conjecture" "Concept" "Proof" "Examples" "Other")))
+    (save-window-excursion
+      (pop-to-buffer (get-buffer "*scratch*"))
+      (erase-buffer)
+      (mapc (lambda (e) (insert (format "%s\t" e)))
+            '("FACET"
+              "Agree"
+              "Assert"
+              "Challenge"
+              "Define"
+              "Judge"
+              "Query"
+              "Retract"
+              "Suggest"
+              "not"
+              "wlog"
+              "stronger"
+              "equivalent"
+              "has_property"
+              "instance_of"
+              "case_split"
+              "beautiful"
+              "easy"
+              "feasible"
+              "plausible"
+              "useful"
+              "auxiliary"
+              "goal"
+              "strategy"
+              "structural"))
+      (insert "\n"))
+    ;; Now, for each facet
+    (dolist (f facets)
+      ;; Make a report, based on a search starting from the current character position
+      (save-excursion
+        (let (report)
+          ;; that comprises an analysis of matches for each IATC function
+          (while (re-search-forward (concat "\\(.*\\)" f "$") nil t)
+            (let (data
+                  (info (match-string 1)))
+              (with-temp-buffer (insert info)
+                                (goto-char (point-min))
+                                (push `("perf[agree]" . ,(count-matches "perf\\[agree\\]" (point-min) (point-max))) data)           ;; FFA500
+                                (push `("perf[assert]" . ,(count-matches "perf\\[assert\\]" (point-min) (point-max))) data)         ;; FFD700
+                                (push `("perf[challenge]" . ,(count-matches "perf\\[challenge\\]" (point-min) (point-max))) data)   ;; F5DEB3
+                                (push `("perf[define]" . ,(count-matches "perf\\[define\\]" (point-min) (point-max))) data)         ;; A52A2A
+                                (push `("perf[judge]" . ,(count-matches "perf\\[judge\\]" (point-min) (point-max))) data)           ;; CD853F
+                                (push `("perf[query]" . ,(count-matches "perf\\[query\\]" (point-min) (point-max))) data)           ;; FFEFD5
+                                (push `("perf[retract]" . ,(count-matches "perf\\[retract\\]" (point-min) (point-max))) data)       ;; FFE4B5
+                                (push `("perf[suggest]" . ,(count-matches "perf\\[suggest\\]" (point-min) (point-max))) data)       ;; FFDAB9
+                                (push `("rel[not]" . ,(count-matches "rel\\[not\\]" (point-min) (point-max))) data)                 ;; 696969
+                                (push `("rel[wlog]" . ,(count-matches "rel\\[wlog\\]" (point-min) (point-max))) data)               ;; DCDCDC
+                                (push `("rel[stronger]" . ,(count-matches "rel\\[stronger\\]" (point-min) (point-max))) data)       ;; 708090
+                                (push `("rel[equivalent]" . ,(count-matches "rel\\[equivalent\\]" (point-min) (point-max))) data)   ;; C0C0C0
+                                (push `("rel[has_property]" . ,(count-matches "rel\\[wlog\\]" (point-min) (point-max))) data)       ;; ??????
+                                (push `("rel[instance_of]" . ,(count-matches "rel\\[wlog\\]" (point-min) (point-max))) data)        ;; ??????
+                                (push `("rel[case_split]" . ,(count-matches "rel\\[wlog\\]" (point-min) (point-max))) data)         ;; ??????
+                                (push `("value[beautiful]" . ,(count-matches "value\\[beautiful\\]" (point-min) (point-max))) data) ;; 66CDAA
+                                (push `("value[easy]" . ,(count-matches "value\\[easy\\]" (point-min) (point-max))) data)           ;; 008000
+                                (push `("value[feasible]" . ,(count-matches "value\\[feasible\\]" (point-min) (point-max))) data)   ;; 6B8E23
+                                (push `("value[plausible]" . ,(count-matches "value\\[plausible\\]" (point-min) (point-max))) data) ;; 228B22
+                                (push `("value[useful]" . ,(count-matches "value\\[useful\\]" (point-min) (point-max))) data)       ;; 00FF00
+                                (push `("meta[auxiliary]" . ,(count-matches "meta\\[auxiliary\\]" (point-min) (point-max))) data)   ;; 00BFFF
+                                (push `("meta[goal]" . ,(count-matches "meta\\[goal\\]" (point-min) (point-max))) data)             ;; 0000FF
+                                (push `("meta[strategy]" . ,(count-matches "meta\\[strategy\\]" (point-min) (point-max))) data)     ;; B0C4DE
+                                (push `("rel[structural]" . ,(count-matches "rel\\[structural\\]" (point-min) (point-max))) data)   ;; 808080
+
+                                (push data report))))
+          ;; summed up over every data item that belongs to that facet
+          (let ((tabulation (reduce (lambda (x y) `(("perf[agree]" . ,(+ (cdr (assoc* "perf[agree]" x :test #'string=))
+                                                                         (cdr (assoc* "perf[agree]" y :test #'string=))))
+                                                    ("perf[assert]" . ,(+ (cdr (assoc* "perf[assert]" x :test #'string=))
+                                                                          (cdr (assoc* "perf[assert]" y :test #'string=))))
+                                                    ("perf[challenge]" . ,(+ (cdr (assoc* "perf[challenge]" x :test #'string=))
+                                                                             (cdr (assoc* "perf[challenge]" y :test #'string=))))
+                                                    ("perf[define]" . ,(+ (cdr (assoc* "perf[define]" x :test #'string=))
+                                                                          (cdr (assoc* "perf[define]" y :test #'string=))))
+                                                    ("perf[judge]" . ,(+ (cdr (assoc* "perf[judge]" x :test #'string=))
+                                                                         (cdr (assoc* "perf[judge]" y :test #'string=))))
+                                                    ("perf[query]" . ,(+ (cdr (assoc* "perf[query]" x :test #'string=))
+                                                                         (cdr (assoc* "perf[query]" y :test #'string=))))
+                                                    ("perf[retract]" . ,(+ (cdr (assoc* "perf[retract]" x :test #'string=))
+                                                                           (cdr (assoc* "perf[retract]" y :test #'string=))))
+                                                    ("perf[suggest]" . ,(+ (cdr (assoc* "perf[suggest]" x :test #'string=))
+                                                                           (cdr (assoc* "perf[suggest]" y :test #'string=))))
+                                                    ("rel[not]" . ,(+ (cdr (assoc* "rel[not]" x :test #'string=))
+                                                                      (cdr (assoc* "rel[not]" y :test #'string=))))
+                                                    ("rel[wlog]" . ,(+ (cdr (assoc* "rel[wlog]" x :test #'string=))
+                                                                       (cdr (assoc* "rel[wlog]" y :test #'string=))))
+                                                    ("rel[stronger]" . ,(+ (cdr (assoc* "rel[stronger]" x :test #'string=))
+                                                                           (cdr (assoc* "rel[stronger]" y :test #'string=))))
+                                                    ("rel[equivalent]" . ,(+ (cdr (assoc* "rel[equivalent]" x :test #'string=))
+                                                                             (cdr (assoc* "rel[equivalent]" y :test #'string=))))
+                                                    ("rel[has_property]" . ,(+ (cdr (assoc* "rel[has_property]" x :test #'string=))
+                                                                               (cdr (assoc* "rel[has_property]" y :test #'string=))))
+                                                    ("rel[case_split]" . ,(+ (cdr (assoc* "rel[case_split]" x :test #'string=))
+                                                                               (cdr (assoc* "rel[case_split]" y :test #'string=))))
+                                                    ("rel[instance_of]" . ,(+ (cdr (assoc* "rel[instance_of]" x :test #'string=))
+                                                                               (cdr (assoc* "rel[instance_of]" y :test #'string=))))
+                                                    ("value[beautiful]" . ,(+ (cdr (assoc* "value[beautiful]" x :test #'string=))
+                                                                             (cdr (assoc* "value[beautiful]" y :test #'string=))))
+                                                    ("value[easy]" . ,(+ (cdr (assoc* "value[easy]" x :test #'string=))
+                                                                             (cdr (assoc* "value[easy]" y :test #'string=))))
+                                                    ("value[feasible]" . ,(+ (cdr (assoc* "value[feasible]" x :test #'string=))
+                                                                             (cdr (assoc* "value[feasible]" y :test #'string=))))
+                                                    ("value[plausible]" . ,(+ (cdr (assoc* "value[plausible]" x :test #'string=))
+                                                                             (cdr (assoc* "value[plausible]" y :test #'string=))))
+                                                    ("value[useful]" . ,(+ (cdr (assoc* "value[useful]" x :test #'string=))
+                                                                             (cdr (assoc* "value[useful]" y :test #'string=))))
+                                                    ("meta[auxiliary]" . ,(+ (cdr (assoc* "meta[auxiliary]" x :test #'string=))
+                                                                             (cdr (assoc* "meta[auxiliary]" y :test #'string=))))
+                                                    ("meta[goal]" . ,(+ (cdr (assoc* "meta[goal]" x :test #'string=))
+                                                                        (cdr (assoc* "meta[goal]" y :test #'string=))))
+                                                    ("meta[strategy]" . ,(+ (cdr (assoc* "meta[strategy]" x :test #'string=))
+                                                                            (cdr (assoc* "meta[strategy]" y :test #'string=))))
+                                                    ("rel[structural]" . ,(+ (cdr (assoc* "rel[structural]" x :test #'string=))
+                                                                             (cdr (assoc* "rel[structural]" y :test #'string=))))
+                                                    ))
+                                    report
+                                    ;; [initial value needed because some counts will be empty, which is represented as an empty list.]
+                                    :initial-value
+                                    '(("perf[agree]" . 0) ("perf[assert]" . 0) ("perf[challenge]" . 0) ("perf[define]" . 0) ("perf[judge]" . 0)
+                                      ("perf[query]" . 0) ("perf[retract]" . 0) ("perf[suggest]" . 0)
+                                      ("rel[not]" . 0)
+                                      ("rel[wlog]" . 0)
+                                      ("rel[stronger]" . 0)
+                                      ("rel[equivalent]" . 0)
+                                      ("rel[has_property]" . 0)
+                                      ("rel[case_split]" . 0)
+                                      ("rel[instance_of]" . 0)
+                                      ("value[beautiful]" . 0) ("value[easy]" . 0)
+                                      ("value[feasible]" . 0) ("value[plausible]" . 0) ("value[useful]" . 0) ("meta[auxiliary]" . 0)
+                                      ("meta[goal]" . 0) ("meta[strategy]" . 0)  ("rel[structural]" . 0)))))
+            (pop-to-buffer (get-buffer "*scratch*"))
+            (insert (format "%s\t%s\n" f (mapconcat (lambda (x) (int-to-string (cdr x))) tabulation "\t")))))))))
+(tabulate)
+rel[structural](problem, S)\newline rel[structural](problem, P)\newline rel[structural](problem, l)\newline rel[structural](problem, windmill)\newline rel[structural](problem, pivot)\newline rel[structural](P, pivot)\newline rel[structural](P, windmill)\newline rel[structural](l, windmill)\newline perf[query](random_test_false)\newline perf[assert](rel[stronger](rel[not](prove_rtf), rel[not](random_test_false)))\newline rel[structural](random_test_false, prove_rtf)	Conjecture
+perf[define](pivot_seq, ps_def)\newline rel[structural](pivot_seq, pivot)	Concept
+perf[assert](rel[has_property](pivot_seq, has_cycle))\newline perf[suggest](meta[goal](cycle_spans_S))\newline perf[judge](value[useful](pivot_seq))\newline rel[structural](S, cycle_spans_S)	Conjecture
+perf[assert](not_any_cycle)	Conjecture
+queryE(additional_condition_on cycles(X))\newline perf[suggest](meta[strategy](cycle_spans_S, process_of_elim))\newline rel[structural](process_of_elim, additional_conditions_on cycles)\newline ???	Concept
+perf[assert](one_turn)\newline perf[judge](value[useful](one_turn))\newline perf[suggest](meta[strategy](problem, induction))\newline rel[structural](one_turn, windmill)\newline rel[structural](one_turn, line)\newline rel[structural](one_turn, S)\newline rel[structural](S, n)\newline rel[structural](induction, n)\newline rel[structural](induction, BC)\newline rel[structural](induction, IH)	Proof
+perf[assert](BC)	Proof
+perf[assert](rel[case_split](IS, IS_A, IS_B))	Proof
+perf[assert](IS_A, IS_A_proof)	Proof
+perf[assert](rel[case_split](IS_B, IS_B1, IS_B2))	Proof
+perf[assert](IS_B1, IS_B1_proof)	Proof
+perf[assert](IS_B2, IS_B2_proof)	Proof
+???	Proof
+perf[define](pivot_seq, ps_def)\newline perf[suggest](meta[goal](cycle_spans_S))	Concept
+perf[assert](cycle_partition, rev_time_pf)\newline rel[structural](cycle_partition, windmill)	Conjecture
+perf[agree](cycle_partition)\newline perf[assert](rel[equivalent](problem, forall_exists_problem), cycle_partition)	Conjecture
+perf[judge](value[easy](S_is_conv))	Examples
+perf[agree](S_is_conv)\newline perf[query](rel[has_property](convex_plus_point, cycle_spans_S)\newline rel[instance_of](S, convex_plus_point)	Examples
+perf[assert](rel[instance_of](convex_plus_point, equi_tri))\newline perf[assert](rel[instance_of](S, equi_tri))\newline perf[assert](rel[has_property](equi_tri, not_colin))\newline perf[challenge](problem, equi_tri_stuck)\newline rel[structural](equi_tri, equi_tri_stuck)\newline perf[judge](rel[not](value[plausible](equi_tri_stuck)))	Concept
+perf[challenge](equi_tri_stuck, alternate)	Concept
+perf[challenge](equi_tri_stuck, alternate1)	Proof
+perf[retract](perf[challenge](problem, equi_tri_stuck))\newline perf[assert](rel[not](half_line))\newline rel[structural](line, half_line)	Concept
+perf[agree](rel[not](half-line))\newline perf[suggest](meta[strategy](problem, spirograph))	Concept
+perf[judge](value[useful](meta[strategy](problem, spirograph)))	Concept
+perf[assert](rel[has_property](two_conseq_hull, not_all_paths))\newline rel[structural](not_all_paths, convex_hull)\newline perf[suggest](meta[strategy](problem, induction_hulls))\newline rel[structural](induction_hulls, convex_hull)\newline rel[structural](convex_hull, S)\newline rel[structural](two_conseq_hull, pivot_seq)	Conjecture
+perf[suggest](meta[strategy](problem, induction_hulls_detail))\newline rel[structural](induction_hulls, induction_hulls_detail)	Proof
+perf[suggest](meta[strategy](problem, strong_ind_hulls))\newline perf[assert](rel[case_split](strong_ind_hulls, strong_ind_hulls_BC, strong_ind_hulls_IH))\newline perf[assert](strong_ind_hulls_BC)	Proof
+perf[assert](two_hulls)\newline perf[suggest](meta[goal](generalize_hulls))\newline perf[assert](rel[instance_of](generalize_hulls, two_hulls))	Proof
+perf[assert](two_hulls_detail)\newline rel[structural](two_hulls_detail, two_hulls)	Proof
+perf[assert](rel[has_property](S, not_all_paths))	Examples
+???	Other
+perf[assert](rel[has_property](S, not_all_paths_detail))\newline perf[challenge](problem, rel[has_property](S, not_all_paths_detail))\newline rel[structural](not_all_paths, not_all_paths_detail)	Conjecture
+***counting this in not_all_paths_detail	Examples
+perf[challenge](perf[challenge](problem, rel[has_property](S, not_all_paths_detail)l), rel[not](half_line))	Other
+perf[challenge](perf[challenge](perf[challenge](problem, rel[has_property](S, not_all_paths_detail)), rel[not](half_line)), not_all_paths_detail_detail)	Examples
+perf[retract](perf[challenge](problem,rel[has_property](S, not_all_paths_detail), start_int)\newline rel[structural](start_int, pivot_seq)	Other
+perf[judge](value[easy](two_and_three))\newline perf[judge](value[easy](S_convex))\newline perf[query](tri_plus_point)\newline perf[assert](rel[instance_of](problem, two_and_three))	Examples
+perf[assert](tri_plus_point, tpp_proof)	Proof
+perf[assert](tri_plus_point, tpp_proof_2)	Proof
+perf[assert](rel[has_property](tri_plus_point, not_all_paths))	Examples
+perf[assert](cell_division)	Concept
+perf[assert](smallest_angle)\newline rel[structural](smallest_angle, pivot_seq)	Concept
+***counting this in smallest_angle	Concept
+perf[suggest](meta[strategy](problem, ind_from_examples))\newline rel[structural](ind_from_examples, S)	Conjecture
+perf[assert](rel[equivalent](problem, forall_exists_problem))\newline ???rel[structural](problem, forall_exists_problem)\newline perf[assert](rel[not](rel[equivalent](problem, forall_forall_problem)))\newline ???rel[structural](problem, forall_forall_problem)	Conjecture
+perf[assert](forall_exists_problem_detail)\newline rel[structural](forall_exists_problem, forall_exists_problem_detail)	Conjecture
+perf[query](forall_forall_problem)	Conjecture
+perf[challenge](forall_forall_problem, two_conseq_hull)	Examples
+perf[challenge](forall_forall_problem, two_conseq_hull)	Examples
+perf[challenge](forall_forall_problem, convex_plus_point)	Examples
+perf[assert](rel[wlog](problem, zero_angle), one_turn)	Proof
+perf[agree](one_turn)\newline perf[assert](corr_point_segmentation)	Proof
+perf[agree](rel[wlog](problem, zero_angle), one_turn)	Other
+perf[challenge](forall_exists_problem, too_many)	Other
+perf[suggest](meta[strategy](problem, proj_duality_approach))\newline perf[assert](rel[equivalent](proj_duality_approach, problem))	Concept
+***beginning counted as proj_duality_detail\newline perf[assert](rel[equivalent](problem, new_proj_prob))\newline perf[suggest](meta[goal](new_proj_prob))	Concept
+perf[define](A, A_def)\newline perf[define](A_graph, A_graph_def)\newline perf[suggest](meta[goal](rel[has_property](A_graph, has_cycle_2)))\newline rel[structural](A, A_graph)	Conjecture
+perf[suggest](meta[strategy](problem, translate_graph))\newline perf[queryE](rel[has_property](A, X), rel[equivalent](rel[has_property](A_graph, has_cycle_2), rel[has_property](A, X)))\newline perf[assert](rel[not](all_has_cycle_2))\newline rel[structural](all_has_cycle_2, has_cycle_2)	Other
+perf[assert](rel[has_property](A_graph, half_partial_cycles), half_thepoints)\newline perf[assert](half_thepoints)\newline rel[structural](half_thepoints, S)\newline rel[structural](half_thepoints, l)\newline rel[structural](half_thepoints, P)	Proof
+perf[agree](half_thepoints)\newline perf[suggest](meta[auxiliary](problem, forall_split))\newline perf[suggest](meta[auxiliary](problem, half_thepoints))	Conjecture
+perf[challenge](half_thepoints, 5_counterex)\newline perf[assert](rel[instance_of](S, S5))\newline rel[structural](S5, 5_counterex)	Examples
+perf[challenge](perf[challenge](half_thepoints, 5_counterex), actual_seq)	Proof
+perf[assert](forall_split, rel[has_property](S, not_colin))	Conjecture
+perf[agree](forall_split)\newline perf[query](value[useful](forall_split))	Other
+perf[assert](value[useful](forall_split))\newline perf[assert](meta[auxiliary](parallel_line, forall_split))\newline rel[structural](parallel_line, l)	Proof
+perf[assert](half_thepoints)	Conjecture
+perf[define](init_line, init_line_def)\newline rel[structural](init_line_def, forall_split)\newline proof_sugg := perf[assert](rel[equivalent](init_turn_by_pi, points_switched_sides))\newline perf[assert](problem, proof_sugg, half_thepoints)\newline *** or perf[assert](rel[stronger](proof_sugg, problem))???\newline perf[assert](rel[instance_of](parallel_line, init_turn_by_pi))\newline rel[structural]((init_turn_by_pi, init_line)	Proof
+perf[judge](value[beautiful](proof_sugg))\newline perf[challenge](proof_sugg, convex_ex_5)\newline rel[structural](convex_ex_5, S)\newline rel[structural](convex_ex_5, l)\newline rel[structural](convex_ex_5, P)	Examples
+perf[retract](convex_ex_5)	Other
+perf[agree](proof_sugg)\newline perf[assert](rel[stronger](proof_sugg, problem))	Other
+perf[assert](half_points_essential, convex_ex_6)\newline perf[assert](rel[instance_of](S, convex_ex_6))\newline rel[structural](convex_ex_6, l)\newline perf[assert](rel[has_property](convex_ex_6, rel[not](has_cycle)))\newline perf[assert](rel[has_property](convex_ex_6, points_switched_sides))\newline perf[queryE](why_half_points_essentia(X))\newline rel[structural](why_half_points_essential, half_points_essential)	Examples
+perf[challenge](rel[has_property](convex_ex_6, points_switched_sides))	Concept
+perf[agree](perf[challenge](rel[has_property](convex_ex_6, points_switched_sides)))	Other
+???	Other
+perf[assert](rel[equivalent](points_switched_sides, half_thepoints), forall_split)	Examples
+perf[agree](rel[equivalent](points_switched_sides, half_thepoints))	Proof
+perf[assert](rel[case_split](init_line, even_case, odd_case))\newline perf[assert](even_case)\newline perf[queryE](next_pivot, X)\newline perf[assert](rel[case_split](odd_case, equal_split, diff_2))	Proof
+perf[agree](rel[case_split](init_line, even_case, odd_case))\newline perf[assert](rel[equivalent](equal_split, diff_2))	Proof
+perf[suggest](meta[strategy](problem, induction_hulls_2))\newline rel[structural](induction_hulls, induction_hulls_2)\newline perf[assert](rel[stronger](problem, inner_start))	Concept
+perf[agree](meta[strategy](probem, induction_hulls_2))\newline perf[agree](rel[stronger](problem, inner_start))	Other
+perf[assert](rel[equivalent](induction_hulls_2, induction_hulls))	Concept
+~	~
+perf[define](f_functions, overlap)\newline rel[structural](A, f_functions)\newline perf[query](rel[has_property](f_function, corresp_perm))	Concept
+perf[challenge](rel[has_property](f_function, corresp_perm), pair_ex)	Examples
+perf[challenge](perf[challenge](rel[has_property](f_function, corresp_perm), pair_ex), not_univ)	Proof
+repair[existential_to_universal](pair_ex, pair_ex_univ)	Examples
+perf[retract](perf[challenge](perf[challenge](rel[has_property](f_function, corresp_perm), pair_ex), not_univ))	Examples
+perf[challenge](rel[has_property](f_function, corresp_perm), pair_ex_univ)	Concept
+perf[assert](rel[has_property](f_function, corresp_seq))\newline repair[less_conditions](corresp_perm, corresp_seq)	Proof
+perf[define](wheel_of_p, wheel_def)\newline rel[structural](wheel_of_p, p)\newline perf[assert](dep_on_2)\newline rel[structural](wheel_of_p, dep_on_2)]	Concept
+perf[query](rel[stronger](X, dep_on_2))	Conjecture
+perf[retract](perf[query](rel[stronger](X, dep_on_2)))	Other
+perf[query](rel[has_property](pivot_seq, has_cycle))	Conjecture
+perf[assert](rel[has_property](pivot_seq, has_cycle))	Other
+perf[assert](rel[has_property](pivot_seq, has_cycle), rel[has_property](f_function, is_perm_pairs))	Proof
+perf[assert](rel[has_property](pivot_seq, has_cycle), pigeonhole_paths)	Concept
+perf[challenge](problem, equi_tri_stuck)	Examples
+perf[retract](perf[challenge](problem, equi_tri_stuck))	Other
+perf[assert](convex_plus_two, f_function_repeat)\newline perf[assert](rel[instance_of](problem, convex_plus_two))\newline rel[structural](f_function, f_function_repeat)\newline perf[suggest](meta[goal](rel[has_property](f_function, touch_all)))	Examples
+perf[define](smallest_angle)	Concept
+perf[suggest](meta[strategy](problem, proof_contrad))\newline rel[structural](proof_contrad, smallest_angle)\newline perf[query](value[feasible](proof_contrad))	Conjecture
+perf[assert](rel[instance_of](convex_hull_stuck, equi_tri_stuck))\newline perf[query](rel[stronger](unworking_path, convex_hull_stuck))	Conjecture
+perf[challenge](rel[stronger](unworking_path, convex_hull_stuck), circle_ex)	Examples
+perf[query](rel[instance_of](convex_plus_point, circle_ex))\newline perf[assert](rel[has_property](equi_tri, cycle_spans_S))\newline ???	Other
+perf[assert](rel[has_property](equi_tri, not_all_paths))\newline perf[assert](rel[has_property](circle_ex, not_all_paths)	Examples
+perf[assert](rel[has_property](star_ex, rel[not](cycle_spans_S)))	Examples
+perf[assert](rel[has_property](star_ex, convex_hull_stuck))\newline perf[judge](rel[not](value[useful](star_ex)))	Concept
+perf[challenge](rel[stronger](unworking_path, convex_hull_stuck), star_ex)	Conjecture
+perf[challenge](rel[stronger](unworking_path, convex_hull_stuck), double_triangle_ex)	Examples
+perf[queryE](rel[has_property](star_ex, span_path))	Proof
+perf[assert](rel[has_property](star_ex, real_span_path))	Proof
+perf[agree](rel[has_property](star_ex, real_span_path))\newline perf[assert](rel[has_property](real_span_path, sweeps_inside))	Other
+perf[define](swept_space, swept_space_def)\newline perf[queryE](X, rel[instance_of](S,X), swept_unbounded(X)))	Conjecture
+perf[assert](no_swept_unbounded, sweeps_out)\newline rel[structural](no_swept_unbounded, swept_unbounded(X))	Conjecture
+??? reported speech	Other
+perf[assert](no_swept_unbounded)\newline perf[judge](value[easy](no_swept_unbounded))\newline perf[query](value[useful](no_swept_unbounded))	Conjecture
+perf[agree](value[easy](no_swept_unbounded))\newline perf[query](value[useful](no_swept_unbounded))	Other
+perf[challenge](rel[stronger](unworking_path, convex_hull_stuck), circle_ex_mod)\newline rel[structural](circle_ex, circle_ex_mod)	Examples
+?? social glue	Other
+perf[suggest](meta[goal](stay_out_hull))\newline perf[suggest](meta[strategy](problem, out_to_in_induction))\newline perf[suggest](meta[auxiliary](out_to_in_induction))\newline perf[suggest](meta[strategy](problem, in_to_out_induction))\newline perf[suggest](meta[auxiliary](in_to_out_induction))	Concept
+perf[define](init_line_even, init_line_even_def)\newline proof_sugg_2 = perf[assert](rel[equivalent](rel[has_property(init_line, turn_by_pi_mod), points_switched_sides_mod]))\newline perf[assert](rel[stronger](proof_sugg_2, problem))	Proof
+perf[assert](rel[stronger](proof_sugg_2, problem))\newline perf[suggest](meta[goal](rel[case_split](proof_sugg_2, even_case, odd_case)))	Proof
+?? social glue	Other
+perf[query](problem_unique_windmill)\newline perf[assert](problem_unique_windmill, unique_div_line)\newline repair[existential_to_unique](problem, problem_unique_windmill)\newline perf[challenge](problem_unique_windmill)\newline repair[additional_conditions](problem_unique_windmill, problem_unique_windmill_even)\newline perf[assert](problem_unique_windmill_even, unique_div_line)\newline perf[assert](problem_two_for_odd, unique_div_line)	Conjecture
+perf[challenge](problem_unique_windmill_even)\newline perf[assert](rel[not](rel[stronger](cycle_spans_S, init_line_even_def)))	Other
+perf[retract](problem_unique_windmill_even)	Other
+perf[agree](rel[not](rel[stronger](cycle_spans_S, init_line_even_def)))\newline perf[assert](rel[stronger]( init_line_even_def, cycle_spans_S))	Conjecture
+perf[agree](rel[stronger](proof_sugg_2, problem))	Proof
+perf[assert](wheel_portion)\newline rel[structural](wheel_portion, wheel_of_p)\newline perf[suggest](meta[strategy](problem, meta[auxiliary](pigeonhole_geom, wheel_portion)))	Concept
+perf[suggest](meta[strategy](problem, induction))\newline rel[structural](induction, n)	Conjecture
+perf[agree](rel[stronger](proof_sugg, problem))	Other

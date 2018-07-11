@@ -1,0 +1,188 @@
+\begin{table}[ht]
+\begin{mdframed}
+{\centering
+\textbf{Performatives}
+
+\par}
+
+\smallskip
+
+\begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+\texttt{Assert} (\emph{s} [, \emph{a} ]) & Assert belief that statement \emph{s} is true, optionally because of \emph{a}.\\
+\texttt{Agree} (\emph{s} [, \emph{a} ]) & Agree with a previous statement \emph{s}, optionally because of \emph{a}.\\
+\texttt{Challenge} (\emph{s} [, \emph{a} ]) & Assert belief that statement \emph{s} is false, optionally because of \emph{a}.\\
+\texttt{Retract} (\emph{s} [, \emph{a} ]) & Retract a previous statement \emph{s}, optionally because of \emph{a}.\\
+\texttt{Define} (\emph{o}, \emph{p}) & Define object \emph{o} via property \emph{p}.\\
+\texttt{Suggest} (\emph{s}) & Suggest a strategy \emph{s}.\\
+\texttt{Judge} (\emph{s}) & Apply a heuristic value judgement \emph{s} to some statement.\\
+\texttt{Query} (\emph{s}) & Ask for the truth value of statement \emph{s}.\\
+\texttt{QueryE} (\{$p_i$($X$)\} . \emph{i}) & Ask for the class of objects \emph{X} for which all of the properties $p_i$ hold.
+\end{tabular}
+
+%% \medskip
+
+%% {\centering
+%% \textbf{Inferential Structure}
+
+%% \par}
+
+%% \smallskip
+
+%% \noindent
+%% \begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+%% % Gabi's notes used ``stronger'' but ``implies'' is more intuitive
+%% \texttt{implies} (\emph{s}, \emph{t}) & Statement \emph{s} implies statement \emph{t}.\\
+%% \texttt{not} (\emph{s}) & Negation of \emph{s}.\\
+%% \texttt{conjunction} (\emph{s}, \emph{t}, \ldots) & Conjunction of statements \emph{s}, \emph{t}, \ldots \\
+%% \texttt{has\_property} (\emph{o}, \emph{p}) & Object \emph{o} has property \emph{p}.\\
+%% \texttt{instance\_of} (\emph{o}, \emph{m}) & Object \emph{o} is an instance of the broader class \emph{m}.\\
+%% \texttt{indep\_of} (\emph{o}, \emph{d}) & Object \emph{o} does not depend on the choice of object \emph{d}.\\
+%% \texttt{case\_split} (\emph{s}, \{$s_i$\} . \emph{i}) & Statement \emph{s} is equivalent to the conjunction of the $s_i$'s.\\
+%% \texttt{wlog} (\emph{s}, \emph{t}) & Statement \emph{t} is equivalent to statement \emph{s} but easier to prove.\\
+%% \end{tabular}
+
+%% \medskip
+
+%% {\centering
+%% \textbf{Reasoning Tactics}
+
+%% \par}
+
+%% \smallskip
+
+%% \noindent
+%% \begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+%% \texttt{goal} (\emph{s}) & Used with \texttt{Suggest} to guide other agents to work on \emph{s}.\\
+%% \texttt{strategy} (\emph{m}, \emph{s}) & Method \emph{m} may be used to prove \emph{s}.\\
+%% \texttt{auxiliary} (\emph{s}, \emph{a}) & Statement \emph{s} requires an auxiliary lemma \emph{a}.\\
+%% \texttt{analogy} (\emph{s}, \emph{t}) & Statement \emph{s} and statement \emph{t} should be seen as analogous in some way.\\
+%% \texttt{implements} (\emph{s}, \emph{m}) & Statement \emph{s} implements the method \emph{m} from a previousl suggested strategy.\\
+%% \texttt{generalises} (\emph{m}, \emph{n}) & Method \emph{m} generalises method \emph{n}.  \\
+%% \end{tabular}
+
+%% \medskip
+
+%% {\centering
+%% \textbf{Heuristics and Value Judgements}
+
+%% \par}
+
+%% \smallskip
+
+%% \noindent
+%% \begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+%% \texttt{easy} (\emph{s}, \emph{t}) & Statement \emph{s} is easier to prove than statement \emph{t}.\\
+%% \texttt{plausible} (\emph{s}) & Statement \emph{s} is plausible.\\
+%% \texttt{beautiful} (\emph{s}) & Statement \emph{s} is beautiful (or mathematically elegant).\\
+%% \texttt{useful} (\emph{s}) & Statement \emph{s} can be used in an eventual proof.\\
+%% \texttt{heuristic} (\emph{x}) & Statement \emph{x} describes an heuristic (with less rigour than a strategy).\\
+%% \end{tabular}
+
+%% \medskip
+
+%% {\centering
+%% \textbf{Content-Focused Structural Relations}
+
+%% \par}
+
+%% \smallskip
+
+%% \noindent
+%% \begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+%% \texttt{used\_in} (\emph{o}, \emph{s}) & Object \emph{o} is used in statement \emph{s}.\\
+%% \texttt{sub\_prop} (\emph{s}, \emph{t}) & Statement \emph{s} contains proposition \emph{t}.\\
+%% \texttt{reform} (\emph{s}, \emph{t}) & Statement \emph{s} can be reformed into statement \emph{t}.\\
+%% \texttt{extensional\_set} (\emph{p}) & The set of objects with property \emph{p}.\\
+%% \texttt{instantiates} (\emph{s}, \emph{t}) & Statement \emph{s} schematically instantiates statement \emph{t}. \\
+%% \texttt{expands} (\emph{x}, \emph{y}) & Expression \emph{x} expands to expression \emph{y}.\\
+%% \texttt{sums} (\emph{x}, \emph{y}) & Expression \emph{x} sums to expression \emph{y}. \\
+%% \texttt{cont\_summand} (\emph{x}, \emph{y}) & Expression \emph{x} contains \emph{y} as a summand. \\
+%% \end{tabular}
+\end{mdframed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\caption{Inference Anchoring Theory+Content: Performatives, and Inferential Structure\label{iatc-table}}
+\end{table}
+
+\begin{table}[ht]
+\begin{mdframed}
+{\centering
+\textbf{Inferential Structure}
+
+\par}
+
+\smallskip
+
+\noindent
+\begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+% Gabi's notes used ``stronger'' but ``implies'' is more intuitive
+\texttt{implies} (\emph{s}, \emph{t}) & Statement \emph{s} implies statement \emph{t}.\\
+\texttt{not} (\emph{s}) & Negation of \emph{s}.\\
+\texttt{conjunction} (\emph{s}, \emph{t}, \ldots) & Conjunction of statements \emph{s}, \emph{t}, \ldots \\
+\texttt{has\_property} (\emph{o}, \emph{p}) & Object \emph{o} has property \emph{p}.\\
+\texttt{instance\_of} (\emph{o}, \emph{m}) & Object \emph{o} is an instance of the broader class \emph{m}.\\
+\texttt{indep\_of} (\emph{o}, \emph{d}) & Object \emph{o} does not depend on the choice of object \emph{d}.\\
+\texttt{case\_split} (\emph{s}, \{$s_i$\} . \emph{i}) & Statement \emph{s} is equivalent to the conjunction of the $s_i$'s.\\
+\texttt{wlog} (\emph{s}, \emph{t}) & Statement \emph{t} is equivalent to statement \emph{s} but easier to prove.\\
+\end{tabular}
+
+\medskip
+
+{\centering
+\textbf{Reasoning Tactics}
+
+\par}
+
+\smallskip
+
+\noindent
+\begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+\texttt{goal} (\emph{s}) & Used with \texttt{Suggest} to guide other agents to work on \emph{s}.\\
+\texttt{strategy} (\emph{m}, \emph{s}) & Method \emph{m} may be used to prove \emph{s}.\\
+\texttt{auxiliary} (\emph{s}, \emph{a}) & Statement \emph{s} requires an auxiliary lemma \emph{a}.\\
+\texttt{analogy} (\emph{s}, \emph{t}) & Statement \emph{s} and statement \emph{t} should be seen as analogous in some way.\\
+\texttt{implements} (\emph{s}, \emph{m}) & Statement \emph{s} implements the method \emph{m} from a previousl suggested strategy.\\
+\texttt{generalises} (\emph{m}, \emph{n}) & Method \emph{m} generalises method \emph{n}.  \\
+\end{tabular}
+
+\medskip
+
+{\centering
+\textbf{Heuristics and Value Judgements}
+
+\par}
+
+\smallskip
+
+\noindent
+\begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+\texttt{easy} (\emph{s}, \emph{t}) & Statement \emph{s} is easier to prove than statement \emph{t}.\\
+\texttt{plausible} (\emph{s}) & Statement \emph{s} is plausible.\\
+\texttt{beautiful} (\emph{s}) & Statement \emph{s} is beautiful (or mathematically elegant).\\
+\texttt{useful} (\emph{s}) & Statement \emph{s} can be used in an eventual proof.\\
+\texttt{heuristic} (\emph{x}) & Statement \emph{x} describes an heuristic (with less rigour than a strategy).\\
+\end{tabular}
+
+\medskip
+
+{\centering
+\textbf{Content-Focused Structural Relations}
+
+\par}
+
+\smallskip
+
+\noindent
+\begin{tabular}{@{\hspace{-.25ex}}p{.3\columnwidth}p{.65\columnwidth}}
+\texttt{used\_in} (\emph{o}, \emph{s}) & Object \emph{o} is used in statement \emph{s}.\\
+\texttt{sub\_prop} (\emph{s}, \emph{t}) & Statement \emph{s} contains proposition \emph{t}.\\
+\texttt{reform} (\emph{s}, \emph{t}) & Statement \emph{s} can be reformed into statement \emph{t}.\\
+\texttt{extensional\_set} (\emph{p}) & The set of objects with property \emph{p}.\\
+\texttt{instantiates} (\emph{s}, \emph{t}) & Statement \emph{s} schematically instantiates statement \emph{t}. \\
+\texttt{expands} (\emph{x}, \emph{y}) & Expression \emph{x} expands to expression \emph{y}.\\
+\texttt{sums} (\emph{x}, \emph{y}) & Expression \emph{x} sums to expression \emph{y}. \\
+\texttt{cont\_summand} (\emph{x}, \emph{y}) & Expression \emph{x} contains \emph{y} as a summand. \\
+\end{tabular}
+\end{mdframed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\caption{Inference Anchoring Theory+Content: Inferential Structure, Reasoning Tactics, Heuristics, and content-focused relations\label{iatc-table}}
+\end{table}

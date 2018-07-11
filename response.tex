@@ -1,0 +1,420 @@
+\newpage
+\section{Response to Reviewers}
+\subsection{Reviewer 1}\label{rev1}
+
+\begin{mdframed}[backgroundcolor=orange!10]
+{[}0.{]}~In this paper, the author aims to develop a framework with which to represent mathematical discourse and its argumentative features, building on Reed \& Budzynska's ``Inference Anchoring Theory'' and contrasting it with Lamport's "temporal Logic of Actions+". In my view, this paper could merit publication, but \textbf{not before taking at least the comment 2 into account}, and making the paper more accessible to readers not so familiar with computational approaches to argumentations.  One way (but not the only way, of course) of doing the latter would be to use in the text much more \textbf{simplified and stylized examples} of mathematical discourse, such that it can quite easily explained in each and every detail how the approach (called IATC) works out in those cases, and to provide the three real life and much more involved and messy examples (or two of these three) in an appendix.
+\end{mdframed}
+
+%% The suggested approach would indeed be a ``major revision''; the
+%%  could be used as the main working example, but
+%% perhaps let's see if there are less invasive ways to address the
+%% concerns\ldots?  Well, after reading the rest of the comments, it
+%% wouldn't be so hard to to foreground the Gowers example (which would
+%% thereby address several reviewer comments), and then we could then use
+%% the other examples as further illustrations (or, indeed, signposting
+%% for future work).
+
+The original text of the Gowers ``2012'' example now appears in Figure \ref{fig:magic-leap}, to offer a straightforward entry point
+for the reader.  This example is both sufficiently simple and
+sufficiently realistic to fully illustrate the practical aspects of IATC.
+We've reordered Section \ref{iatc-examples}, and simplified
+the other examples.
+
+\begin{mdframed}[backgroundcolor=red!10]
+1.~The paper aims to develop tools both for \textbf{understanding and representing the development of mathematical knowledge} and for \textbf{supporting mathematicians}. The paper emphasizes the first aim, and it would be interesting to give some \textbf{more detailed clues of how the framework could be supportive to mathematical practice}. After all, the framework itself does not check proofs, or provide by itself heuristics. So, probably, \textbf{it can be aligned with recommendations on how to use software for communicating in a fruitfull way about mathemical problems}, but the paper, as it stands, does not really provide details about how computer-user interaction will profit from the framework.
+\end{mdframed}
+
+\emph{Ursula will add a paragraph illustrating ``state of the art''
+  for interactions with existing computer systems, say why it's not
+  entirely satisfactory for all purposes, and say why IATC could
+  help.}
+
+\begin{mdframed}[backgroundcolor=orange!10]
+2.~In Section 2.1 various approaches to the concept of ``argument'' in a mathematical settings are mentioned, but the author does not make it very clear what concept of argument is used in the current paper. I surmise that various questions need answering: Does ``argumentation'', as used in this paper, necessarily have a communicative / pragmatic component (and if yes: exactly what communicative uses of reasoning turn reasoning or inference into ``argument''?) or can a construct of inference or reasoning itself count as ``argument''?  Does argument in mathematics always involve proof (e.g. proof used to convince someone of the truth of a theorem or use of a proof to generate a theorem, or proof used to make someone understand a theorem, et cetera), or may it also include mere reasoning about strategy or even reasoning about something different from proof or strategy? \textbf{I strongly recommend to be much more explicit and precise about the concept of mathematical argument, and to return to this issue in the paper's conclusion.}
+\end{mdframed}
+
+Now Section \ref{argmath} is given a more solid framing,
+with reference to the general definition of argument from Mercier and Sperber,
+and the ideas from Reed and Budzynska that led them to develop IAT.
+We also give a more explicit treatment of previous writing on
+argumentation in mathematics.
+
+TBD: Return to this in the conclusion (or discussion?) and talk about
+what we've learned about communicated reasoning in mathematics.
+
+%% I think we somehow intended to say that IATC could help with all aspects of argument, but then were indeed rather vague about how it would help.  Let's incorporate the questions that the reviewer asked above as a rhetorical question in the paper, then answer it, rather than just provide a survey of different senses. Also, this is clearly linked to the first point above, about ``how does IATC help'', so whatever our answer here, we should then show convincingly that IATC helps.
+
+%% \begin{quote}
+%% \textbf{Dave}: We should be able to give a nice clear introduction to what we want from mathematical argument - it might just be an extra paragraph at the end of 2.1: we want to capture X but not Y.
+%% \end{quote}
+
+%% Agree.  The survey of different meanings that we have is a start, but we haven't yet said what \emph{we} bring to the table.  I actually doubt if IATC helps with \emph{all} of the existing senses of argumentation.  We might use the survey of definitions as a ``feature grid'' and show where we do help.
+
+%% As a minor point, we didn't refer to Mercier \& Sperber ``Why do humans reason? Arguments for an argumentative theory'' in the initial submission; their definition of argumentation and perhaps one or two others might be worth including for some broader framing (even though this would not be a mathematics-specific definition of argumentation, it could be helpful to say how mathematical argumentation relates to other kinds).
+
+\begin{mdframed}[backgroundcolor=orange!10]
+3.~I think that for many readers of this journal the first full paragraph at page 4 (starting with: ``Along these lines, Pease et al. ...'') contains too many expressions and labels that require explanation (structured and abstract argumentation; The Online Argument Structures Tool; DungOMatic, grounded extension). 
+\end{mdframed}
+
+Details have been moved to a footnote to provide pointers for readers who
+may be interested.  The surrounding text is now more explicit about
+how our work differs from the indicated previous effort.
+%% Maybe move this info to a footnote, with some signposting there for readers who might be interested?
+
+%% \begin{quote}
+%% \textbf{Dave}: R1 generally needs some hand holding (e.g. Point 3), so they might be indicative of a general reader.
+%% \end{quote}
+
+%% Yeah, the technical stuff was introduced mainly in case we got a reviewer who \emph{was} super interested in such stuff.  But, luck of the draw, we got one who wasn't.  Probably better, because as we say in the paper, we're not actually working at that level of formality.
+
+
+\begin{mdframed}[backgroundcolor=orange!10]
+4.~In the example used to explain the ideas of the IAT, it remains somewhat unclear what is meant by saying that the logical content ``not-A'' is attached to the transition from Bob's utterance ``A'' and Wilma's utterance ``No.'' (More plausibly, one could say that ``not-A'' is what gets expressed by Wilma's ``No'' in the specific setting where Bob previously asserted ``A''.)
+\end{mdframed}
+
+We've treated this in more detail, adding a more typical example (the
+new Figure \ref{fig:TypicalIAT}) alongside Figure \ref{fig:A-not-A},
+and discussing the features common to both.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+5.~The analogy between the pragma-dialectical idea of a complex speech act of argumentation (based on various assertives) and the exchange of assertion and denial in figure 1 merits some further development, in my view. Further: the connections Reed and Budzynska seem to assume between $\langle$such a higher textual level$\rangle$ and $\langle$the idea of an implicit speech act$\rangle$ and the connection with $\langle$the way dialogue rules influence the construction of argument$\rangle$ remain insufficiently clear. Finally, by quoting Budzynska it is suggested that Figure 1 contains an argument; However, I am not sure about that (also see comment 2). In short: I think the explanation of IAT needs to be clarified.
+\end{mdframed}
+
+In addition to more exposition and the additional example, we now
+point to Visser et al \citeyearpar{visser2011correspondence} for
+further theoretical underpinnings.  We also get more use out of Figure
+\ref{fig:A-not-A}, by using it to describe what IAT \emph{does not}
+do, and better motivate the approach that we introduce with IATC.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+6.~Section 2.3 lacks an example. This could be solved by including a reference to Figure 6.
+\end{mdframed}
+
+We added a forward reference to the figure (now Figure \ref{fig:gowers2012-ala-lamport}).
+
+\begin{mdframed}[backgroundcolor=orange!10]
+7.~On page 7, the contrast between IAT and IATC is explained by way of a slightly new example. However, because this example is different from the ``A/No''-dialogue, it is hard to assess the differences. What would be the IATC representation of the earlier example, or: what would be the IAT representation of the new example?
+\end{mdframed}
+
+We've adjusted the example slightly so that it is more clear that it extends the earlier dialogue.  We also slightly adjusted the surrounding text to clarify
+the issues that motivate the difference between the two analytic strategies.
+%% I think everyone agreed it would be good to do an example using both
+%% notations.  We can either add one, or, alternatively, explain why we
+%% \emph{can't} add one.
+
+%% \begin{quote}
+%% \textbf{Dave}: It's still hard to talk about our stuff as IAT+C, as we're not a strict superset. Maybe we keep the acronym for historic reasons, but talk about it as a different framework, and then we can contrast the two? I'd still be happy to change the name if we find something good.
+%% \end{quote}
+
+%% I think the acronym is fair: the ``+'' doesn't denote a strict superset, but rather \emph{How does IAT have to change when content is introduced?}  If we wanted to be really precise we might call it IAT$\Delta C$ (but I'm not suggesting we do that!).  But maybe this can guide the response to this reviewer's Comment 7.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+8.~Different from the ``A/No'' example, I do think that the example in Fig. 2 contains argumentation: First there is the argument ``Not A because B''; Next, there is the subtle and somewhat implicit argument by Bob: ``(possibly) A', because A' is not vulnerable to objection B.'' However that may be, it would be good to be explicit about how to conceive of the argumentation(s) within this example. 
+\end{mdframed}
+
+We've clarified that Wilma's statement `\emph{Because $B$}' is a communicated reason for rejecting $A$, and also added the observation suggested by the reviewer that Bob is making an implicit argument.  This does not change the current analysis, but points to a strength of the IATC framework: ``If the dialogue continued from this point, detailed relationships between the constituent contents of $A^\prime$ and $B$ may need to be discussed, and an IATC analysis would be able to unpack these and account for the details.''  
+
+\begin{mdframed}[backgroundcolor=red!10]
+9.~It would be good to be more explicit about the methodology used to arrive at the Tables 1 and 2. (I assume that this set of performatives, structures, etc., is the outcome of trying to find patterns in a limited number of mathematical discourses studied.). In Table 2, the content of ``goal (s)'' is not specified.
+\end{mdframed}
+
+\emph{Gabi has added a paragraph, and I've revised it. Alison plans to check/extend with a description of methods used to create the initial frameworks.  Ursula suggests: ``Just needs a couple of vague sentences saying what he said `This set of performatives, structures, etc., is the outcome of trying to find patterns in a limited number of mathematical discourses studied'.{''}}
+
+Clarified in the table that ``goal($s$)'' means ``guide other agents to work to prove $s$.''
+%% \textbf{@All, Any feedback about methodology from others who were
+%%   involved in the earlier stages of the project?}
+
+%% It's interesting that ``goal (s)'' is specifically singled out for
+%% comment.  I guess this is a very limited version of the question about
+%% ``types'' that Ursula brought up with regard to these tables.  I think
+%% this specific query can be relatively easily addressed.  Note, the
+%% concept of goals seems to relate to the question ``what is meant by
+%% argumentation?''
+
+\begin{mdframed}[backgroundcolor=orange!10]
+10.~The meanings of the performatives and  contents in tables 1 and 2 are suggested, \textbf{but not really defined}, or explained by way of an example. Some explanation is desirable, though, for not all of the entries are fully clear (especially the content-focused structural relations). And given that not all of them return in the examples of the next section, they remain unexplained event having read the full paper.
+\end{mdframed}
+
+Appendix \ref{app:reference-coding-samples} has been added, providing examples.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+11.~On page 10, the reference to 15 intermediate relations in table 2 remains unclear to me.
+\end{mdframed}
+
+That was probably an artefact of counting the ``content-focused''
+relations separately from the others.  At latest count the table
+contains 25 (total) relations.  We have clarified how these relations
+are used in the accompanying text.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+12.~The expression ``s-expressions'' is left unexplained.
+\end{mdframed}
+
+We've no longer refer to s-expressions, since we don't need more than
+one surface syntax to explain what we're doing in this paper. 
+
+\begin{mdframed}[backgroundcolor=orange!10]
+13.~Some introduction to the mathematical statement H (Fig. 3) is desirable.
+\end{mdframed}
+
+A pointer to the source now appears in Footnote \ref{fn:IMO-intro}, and surrounding text explains the context briefly.  The caption of the figure (now Figure \ref{fig:QuickIATCexample}) points to the more full analysis that appears later.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+14.~My hunch would be that in H (Fig. 3), there are not three performatives. Rather: There is one utterance, which the speech act of judging something to be useful is performed. And the content of this something is the formulation of a problem or goal in a particular way. In other words: Maybe it can be explained in further detail how to arrive at this specific reading / representation. 
+\end{mdframed}
+
+We added an itemized list on page \pageref{list:example-analysis} that details how the three performatives arise in our analysis.
+
+%% I'm not quite sure what this is getting at, but I guess the take-away
+%% is: if we're going to use this as an example, we should also show
+%% \emph{how} we came up with it, not just the end result.  That's a
+%% reasonable request.
+
+%% \begin{quote}
+%% \textbf{Dave}: For R1 point 4, I'd agree that some simple examples that indicate the differences [with IAT] would be interesting. Maybe something like: ``We can always divide P by Q'' $\rightarrow$ ``P is [not?] prime'' as an example of properties of P constituting implicit links in the argumentation?  I'm trying to find something where there is a clear relationship in the maths that doesn't surface in the dialogue.
+%% \end{quote}
+
+%% Upshot: I like the idea, maybe we can construct a simple mathematical example that is more transparent than the one we used.  Or, just be more clear about how the particular example we selected actually works.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+15.~When confronted with Figure 4, it is not yet known what discourse is represented by it, and as a result, the details of the figure are very hard to understand, if at all. Given that it is used only to show nesting, possibly it would be wise to use a much more stylized example at this point.
+\end{mdframed}
+
+We've deferred an example of nesting to the Examples that it appears together with the essential context.
+The example now appears in Figure \ref{fig:nested}, and is cropped
+to focus on the portion of interest.
+% Or we could introduce the text from the ``2012'' lecture (which is in an appendix in my thesis), so that the discourse \emph{is} familiar.  This would accord with the request in Comment 0 about \textbf{simplified and stylized examples} being worked throughout.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+16.~On page 13, it is stated that the question in Figure 5 can be parsed as proposing an analogy between two propositions. It remains somewhat unclear what is meant. Does the author state that this question constitutes an indirect speech act of a proposal? Probably not, for the author proceeds by saying that the querent knows that 1 is true, which suggests that the querent expresses an argument from analogy (``1 is true; 1 is analogous to 2; therefore, presumably, 2 is true''). Possibly, the most refined reading of the utterance in Figure 3  would be: ``Is this argument from analogy cogent?'' However that may be, I would recommend to be more clear about the interpretation of this utterance, before turning to its formalization.
+\end{mdframed}
+
+The reviewer is exactly correct, and we've used these ideas to improve the presentation in this section.
+%% The discussion of the example (now Figure \ref{fig:mathoverflow-question}) has been clarified along these lines.
+
+%% Another \emph{how} question that can be addressed by making the presentation somewhat more meticulous.
+
+%% \begin{quote}
+%% \textbf{Dave}: I kind of agree. They are asserting (1) and questioning whether (2) - which has a structural similarity to (1) - is true. So something like:
+
+%% \begin{itemize}
+%% \item assert(1)
+%% \item query(2)
+%% \item reform(1,2)
+%% \end{itemize}
+%% \end{quote}
+
+%% That's an interesting use of ``reform'', I'm not sure I would have written it that way but it could work.  My thought on ``analogy'' is that it signals some such (schematic) reformation is be possible.  But as in the text talking about Sowa and Majumdar's paper, the surface analogy between the statements probably wouldn't hold once we dig a little deeper into the contents.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+17.~I do not understand the final sentence on page 14. Is it stated that by these methods one may come to the correct answer to the question at hand? If so, I wonder about the relevance of that statement.  After all, the topic at this point in the paper only seems to be how to understand and parse and represent mathematical discourse or dialogue; Not the evaluation of the correctness or reliability of statements within that disocurse. 
+\end{mdframed}
+
+We've reordered the section so that its first sentence makes clear
+what our claim is.  The issues involved are relevant to the reviewer's
+Comment 1.  We aim to show a direction beyond the state of the art for
+machine interaction with mathematics: and ``correctness'' is an
+important part of the state of the art.  The advance outlined would be
+machine representations of heuristics that operate on IATC representations,
+to ascertain the correctness and interest of
+different mathematical propositions.
+
+We've made a minor change to the specific sentence mentioned.
+It is now cast in positive terms:
+``However, further mathematical knowledge and explicit heuristics
+would need to be supplied in order to demonstrate the truth or falsity
+of the various propositions.''
+
+% Actually, this is where we're starting to get into an answer to the question ``why does IATC matter?'', but it's a bit buried here, or convoluted, so should probably be moved into a separate section that directly addresses that question.  See Comment 1 above.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+18.~Listing 1 is about how to import the question at hand. Some more explanation is needed for readers from outside the world of computing: What is the threefold distinction? Is everything manually typed, or only what follows ``read-tree''? What is this command ``read-tree''? Why are only some parts in italic? What do the dots (lowest lines) mean? Is an entity defined by way of 130? Why jump to 134? And so forth. I understand that it won't do to fully introduce readers to such tables. Therefore, I would suggest to either use more stylized examples (and put detailed examples in a appendix) or indicate to the readers what exactly they should understand form it in order to grasp your line of argument in this paper.
+\end{mdframed}
+
+We decided to remove the listing entirely, because sketching these preliminary implementation details
+distract from the main point of this section, which is to outline, at a high level, the knowledge representation issues that are at stake in processing informal mathematical dialogues.
+%% I think the reviewer's comment and Dave's follow up comment (below)
+%% suggest that we may be best off getting rid of this listing, and
+%% saving it for future work.
+
+%% \begin{quote}
+%% \textbf{Dave}: I think Listing 1 gets us into trouble! It makes some
+%% assumptions about identity (as encoded in the gensymming) which could
+%% be quite tricky in practice (After lots of chats with PeteB, I am
+%% scared any time blank nodes come in to play, which is essentially
+%% what's happening here, with the added issue that (unless there is some
+%% magic to Lisp names that I don't understand) you'd have to parse out
+%% the numeric identifiers if you wanted to make use of the
+%% structures). I would tend to argue for not including the s-expression
+%% version - I don't think it helps much, and gives the reader more
+%% notations to grapple with.
+%% \end{quote}
+
+%% Yes, it's definitely tricky!  Shall we spare the reader some
+%% head-scratching moments, and just kill off Listing 1, then revisit
+%% these issues in another paper (accompanying a more full
+%% implementation) at some point later on?
+
+\begin{mdframed}[backgroundcolor=orange!10]
+19.~I would recommend to include an intuitive, introductory expose of the nature and  / or interest and /or difficulty of the ``magic leap'' problem, the MathOverflow problem, and the MiniPolymath issue.
+\end{mdframed}
+
+A short bullet list motivating the examples is now presented on page \pageref{list:motivation-for-examples}.
+The text of this section introduction has also been revised to ensure that each example is clearly framed.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+20.~I would recommend to include some quotes from Gowers' lecture, so as to make it more plausible that the IAT reconstruction is more natural than the Lamport-style reconstruction.
+\end{mdframed}
+
+A near-verbatim account of the proof as presented at the lecture now appears in Figure \ref{fig:magic-leap}.
+
+\begin{mdframed}[backgroundcolor=red!10]
+21.~The 5-fold distinction on p. 21 (taken from Pease and Martin) requires some introduction. For example: How do they relate (if at all) to the Tables 1 and 2?
+\end{mdframed}
+
+\emph{At first glance the relationship is ``not at all,'' or rather, ``orthogonally.''  However, Alison might have some reflections here.  Do I remember correctly that the different typologies both came up in the grounded theory tagging?  Maybe the IATC tags could be seen as a sort of phylogenetic tree stemming from the earlier typology?}
+
+\begin{mdframed}[backgroundcolor=orange!10]
+22.~I recommend to refer to the comments in MiniPolymath (such as to comment 14.2.2 on page 24) only within the references, like references to page numbers in a paper.
+\end{mdframed}
+
+We've now referenced them in footnotes.
+
+\section{Reviewer 2}\label{rev1}
+
+\begin{mdframed}[backgroundcolor=orange!10]
+0. The authors propose what they call Inference Anchoring Theory + Content (IATC), an extension of the earlier Inference Anchoring Theory (IAT), as a framework for the modelling of mathematical argumentation. They provide three examples of the utility of IATC and compare it to one competing system, Lamport's structured proofs. They conclude, plausibly if perhaps unsurprisingly, that IATC is more faithful to the patterns of argument that arise in mathematical practice than Lamport's more revisionary approach.
+\end{mdframed}
+
+%No response needed here, except maybe to say, ``in our revision we've decided to focus in on the Gowers example'' (if that's indeed what we do).
+
+\begin{mdframed}[backgroundcolor=orange!10]
+1. This paper is a snapshot of an ambitious and ongoing research programme. As the authors concede, much work remains to be done. However, \textbf{I happily endorse its publication}, since it reports on a significant and encouraging development in that programme.
+\end{mdframed}
+
+%No response needed here.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+2. My main criticism of the paper is presentational (and should be easy to remedy): the presentation of IATC in §3 does not make sufficiently clear which components are original to IATC and which are carried over from IAT.  We are told that IATC ``should not be seen as a strict addition to'' IAT (p. 6), but also that ``IATC adds a range of extra machinery to the IAT framework'' (p. 8).  This left me unclear how much (if any) of the apparatus in Tables 1 \& 2 was drawn from IAT and how much new to IATC. I'm sure I could remedy my ignorance by reading up on IAT, but the authors should not require their audience to do this. Indeed, the principal value of the paper may lie in introducing IAT/IATC to argumentation theorists of mathematics as yet unfamiliar with either system. Hence it is important to get this right.
+\end{mdframed}
+
+We have attempted to be more clear about all of these issues
+throughout Section \ref{iatc}, and have added a summary of the adaptations
+at the end of that section.
+%% \textbf{@Alison, I'm especially curious about what you think on this one?}
+
+%% Given that they say it should be ``easy to remedy'', let's not go
+%% overboard in our response.  The main thing to address here seems to be:
+%% what is ``carried over from IAT''?
+
+%% To answer this, I don't think we should try to make a self-contained and
+%% comprehensive introduction to IAT: it has lots of guidelines, rules, and
+%% ideas which are not ours, and which it isn’t in the scope of this paper
+%% to discuss.  But we could try to draw a more clear side-by-side
+%% comparison.  (It'd be great if the IAT folks published their tutorials
+%% and guidelines online, so they could be referenced.)
+
+%% One thing we can say is that IAT (as it stands by default) would not
+%% be of much use to ``argumentation theorists of mathematics''.  The idea of
+%% IAT+C is: ``How does IAT have to change when content is introduced?''
+
+%% For me this is what the ``+'' is getting at: it's not a superset relation,
+%% but a kind of delta.  We end up with many changes to the framework (but
+%% still some traces of the initial ideas remain).
+
+%% Lastly, the reference to ``the apparatus in Tables 1 \& 2'' is saying
+%% something very similar to Reviewer 1, Comment 9, above. I can describe
+%% how the table evolved in 2017 but would anyone be able to jump in here
+%% with a paragraph describing the earlier development/foundations?
+
+
+\begin{mdframed}[backgroundcolor=orange!10]
+3. p. 2: We are told that IAT is a ``general-purpose argument modelling formalism'' but also that §2 will review ``previous research on mathematical argument, in particular Inference Anchoring Theory''. So, is IAT general purpose or mathematics specific?
+\end{mdframed}
+
+We've made the high-level outline of the paper that appears in the
+introduction more detailed and carefully worded.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+4. p. 3: ``Carrascal (2015) provides an excellent survey of recent thinking about argument in mathematics.'' Indeed she does! But a few more landmarks might be helpful. Notably, there is now a whole book on argument in mathematics: Aberdein, A. and Dove, I. J., eds (2013). The Argument of Mathematics. Springer, Dordrecht.
+\end{mdframed}
+
+We now give some more landmarks, including references to some of the
+chapters of the book mentioned.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+5. p. 3: ``research-level Polymath'' is not explained. Maybe this is familiar enough to need no explanation--or maybe not.
+\end{mdframed}
+
+We've adjusted the text so that the
+research-level Polymath projects are mentioned, briefly, in Section \ref{iatc-examples:minipolymath}.
+By that point, MiniPolymath will have come up several times, so it should flow better for the reader.
+
+\begin{mdframed}[backgroundcolor=red!10]
+6. p. 7: It seems potentially misleading to set aside Discourse Representation Theory in the context of the (apparently!) general purpose IAT without mentioning that it has been the basis for at least two projects concerned specifically with mathematics: the proof-checking software NaProChe and Mohan Ganesalingam's account of mathematical discourse: Ganesalingam, M. (2013). The Language of Mathematics: A Linguistic and Philosophical Investigation. Springer, Berlin. Of course, neither project has the same goals as the authors' project, but an acknowledgement in a footnote that DRT has been successfully applied to mathematics seems in order.
+\end{mdframed}
+
+We have added a couple paragraphs to compare and contrast DRT and IATC in Section \ref{discussion}.
+A forward reference to this discussion appears in Section \ref{iatc} where DRT is first mentioned.
+%% Yeah, it would be interesting to \emph{contrast} the goals of those efforts with ours.  They really shouldn't have been left out!  The contrast can also help address Reviewer 1, Comment 2.  
+
+%% Interesting, because maybe we're not \emph{just} concerned with argument, but also somewhat concerned with discourse.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+7. p. 14: ``the predicates 'finite-group', and 'subgroup', as well as the symbolic union of conjugate subgroups, and so on, are not part of the IATC modelling language''. So where do they come from and to what constraints (if any) are they subject? Is the choice of notation purely at the discretion of the coder? If so, how is ambiguity avoided? This is a notorious difficulty in mathematics knowledge management (MKM), since mathematicians routinely overload their notation, relying on the reader's unformalized expertise to resolve ambiguity. Similar worries would seem to arise for IATC.
+\end{mdframed}
+
+%% The most straightforward way to deal with this is to remove the listing (see Reviewer 1, Comment 18).  But, just to say a few words to address the spirit of the remark (which could be important for other reasons):
+
+%% I envisioned
+IATC does allow different representation languages to be used.  For this section, \emph{some} representation language needs to be used to trace through the example.  We selected a neutral pseudocode.  It can be assumed that all tags into the same representation language also index into some shared knowledge base in which ambiguities have been resolved.
+
+%% And, yes, the same sorts of criticism could apply to IATC -- we acknowledge that the codings we've generated are somewhat subjective.  However, I suppose we'd want to argue that even though multiple different representations of a given text would, in theory, be possible (sometimes? frequently?), it doesn't matter so much.  The real question would be how ambiguous the underlying mathematics actually is.  If there is, in fact, some one ``correct'' meaning in the underlying mathematics, this could be found through dialogue with the system.
+
+%% In the current work we haven't introduced a \emph{parser}, though one could probably be written.  We've shown, by hand, how it might behave.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+8. p. 26, fig. 13: The pie charts are an unhelpful visualization of these data: the colours are hard to distinguish, white numbers on yellow background are illegible, and--most importantly--it is hard to make comparisons across the five categories. I suggest replacing the pie charts with a parallel coordinates plot. (See \url{https://en.wikipedia.org/wiki/Parallel_coordinates}.)
+\end{mdframed}
+
+We have redone the pie charts without numbers (now in Figure
+\ref{fig:piecharts}).  The individual counts are less important than
+the visual impression that the pie charts give, showing that the five
+categories have very different compositions.  A parallel coordinates
+plot would give a more detailed picture of the data, but we think such
+a diagram would not serve intuition as well.
+
+%% However, I found them rather illuminating.
+
+%% It occurs to me that maybe another version of the timeline would be useful, one that maps out where the items fall in the simpler five part typology across time.
+
+%% And the numbers could be removed entirely if they're hard to read, since the main point is that the pie charts show different ratios anyway.  The comparisons they support are meant to be bulky ones.  If the ``parallel coordinates'' plot was somehow more revealing we could produce one, surely, but I suspect they might be even harder to read.  Still, will investigate (but with low priority, to deal with after the other things have been done).
+
+%% Maybe the deeper question here is: what's the point of the comparison.  See Reviewer 1, Comment 21.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+9. I also spotted some typos and other infelicities:
+
+p. 2: ``data ingest'' for ``data ingestion''?\\
+p. 2: ``designed to surface'' for ``designed to bring to the surface''?\\
+p. 2: ``an overlaid layer'' for ``an overlay''?\\
+p. 4: ``informal mathematical developed in Lakatos's'' for ``informal mathematical proof developed in Lakatos's''.\\
+p. 6: ``by helping to surface errors'' for ``by helping to bring errors to the surface''?\\
+p. 10: ``which are in most cases are filled'' for ``which are in most cases filled''.\\
+p. 10: ``used to surface relationships'' for ``used to bring relationships to the surface''?\\
+p. 13: ``gives more a more detailed'' for ``gives a more detailed''.\\
+p. 13: ``querent'' for ``questioner''?\\
+p. 20: ``helps surface additional intuitions'' for ``helps to bring to the surface additional intuitions''?\\
+p. 21: ``an except from the MiniPolymath'' for ``an excerpt from the MiniPolymath''.\\
+p. 21: ``views of the anatomy MPM3'' for ``views of the anatomy of MPM3''.\\
+p. 28: ``allow us expand the structure'' for ``allow us to expand the structure''.\\
+\end{mdframed}
+
+Fixed.
+
+\begin{mdframed}[backgroundcolor=orange!10]
+pp. 29 ff.: There are multiple typos in the references. In particular, several entries have two copies of the doi, and some have three!
+\end{mdframed}
+
+The multiple DOIs have been removed, and the references checked over.
